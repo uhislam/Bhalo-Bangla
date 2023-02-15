@@ -7,13 +7,41 @@ if (document.getElementById(days[x].toString()).checked == true){
 }
 if (activedays.length == 0){
     document.getElementById('days').innerHTML= "no days yet."
+    // document.getElementById('days2').innerHTML= "no days yet."
+
 }else{
     document.getElementById('days').innerHTML= new Intl.ListFormat('en-US').format(activedays)
-}}
+    document.getElementById('days2').innerHTML= new Intl.ListFormat('en-US').format(activedays)
 
+}}
+try{
 document.getElementById('hours').innerHTML = document.getElementById('sessionLength').value*60
+document.getElementById('updateLength').innerHTML = document.getElementById('sessionLength').value*60
+
 document.getElementById('total').innerHTML = document.getElementById('sessionLength').value*60*activedays.length
-activedays =[]
+activedays = [];
+
+document.getElementById('time').innerHTML = document.getElementById('sessionTime').value
+document.getElementById('namee').innerHTML = document.getElementById('usr').value
+
+let checkee = []
+if (document.getElementById('rd').checked == true){checkee.push('Reading')}
+if (document.getElementById('wr').checked == true){checkee.push("Writing")}
+
+if (document.getElementById('li').checked == true){checkee.push("Listening")}
+
+if (document.getElementById('sp').checked == true){checkee.push("Speaking")}
+if (checkee.length > 0){
+document.getElementById('foocus').innerHTML= new Intl.ListFormat('en-US').format(checkee)} else{
+    document.getElementById('foocus').innerHTML="generic bangla"
+
+
+
+}}catch(error){
+console.log("heehee")
+}
+
+delete(checkee);
 }
 update()
 

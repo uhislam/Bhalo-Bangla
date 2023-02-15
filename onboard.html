@@ -174,11 +174,14 @@
                                                     <script src="onboard.js"></script>
 
                         
-                      
+                                                    <h2 class="h5 text-left mt-5">Set the class time (CST)</h2>
+                                                    <div>
+                                                      <input oninput="update()" id="sessionTime" type="time" class="form-control" value="17:00" />
+                                                    </div>
                       <h2 class="h5 text-left mt-5">Set the Session Length: <span class="fw-bold" style="color: #008545;""> <span id="hours">45</span> minutes</span></h2>
                       <input oninput="update()" type="range" class="form-range mt-0" min="0.25" max="1.5" step="0.25" id="sessionLength">
-
-                      <h5 class="h5">Total: <span id="total">0</span> minutes per week</h5>
+                      
+                      <h2 class="h2 mt-5">Total: <span id="total">0</span> minutes per week</h5>
 
                       <div class="row">
 
@@ -355,7 +358,7 @@
     color: #4E5562 !important;
                             }
                           </style>
-                                                    <script src="onboard.js"></script>
+                                                    
 
                         
                       
@@ -374,7 +377,7 @@
                         <div class="row row-cols-1 row-cols-md-2">
                         <!-- unit 1 -->
                         <div class="col">
-                          <input onclick="setToSelf2(1)" type="radio" class="btn-check unit" id="unit1" name="units">
+                          <input onclick="" type="radio" class="btn-check unit" id="unit1" name="units">
                         <label style="min-width:240px; height: 112px;text-align: left; background-color: #F0C433; border:none;" class="btn btn-outline-secondary d-flex flex-row m-0 p-0 me-3 mb-3 justify-content-between" for="unit1">
                         <div class="ps-3 pt-2"><p class="fw-bold m-0 p-0 text-white">Unit 1</p><p class="m-0 p-0 text-white" style="font-size: larger; line-height: 20px;">Language Basics</p><span class="badge rounded-pill text-bg-success mt-2">Recommended</span>
                         </div>
@@ -432,20 +435,20 @@
                       <h2 class="h2 text-left mt-5">Focuses:</h2>
                       <p class="mb-1">Select all that apply:</p>
                       <div class="d-flex flex-row">
-                      <div class="me-2">
-                        <input type="checkbox" class="btn-check" id="rd" autocomplete="off">
+                      <div class="me-2" id="checkboxes">
+                        <input oninput="update()" type="checkbox" class="btn-check" id="rd" autocomplete="off">
                         <label class="btn btn-outline-success" for="rd">Reading</label><br>
 
                       </div><div class="me-2">
-                        <input type="checkbox" class="btn-check" id="wr" autocomplete="off">
+                        <input oninput="update()" type="checkbox" class="btn-check" id="wr" autocomplete="off">
                         <label class="btn btn-outline-success" for="wr">Writing</label><br>
 
                       </div><div class="me-2">
-                        <input type="checkbox" class="btn-check" id="li" autocomplete="off">
+                        <input oninput="update()" type="checkbox" class="btn-check" id="li" autocomplete="off">
                         <label class="btn btn-outline-success" for="li">Listening</label><br>
 
                       </div><div class="me-2">
-                        <input type="checkbox" class="btn-check" id="sp" autocomplete="off">
+                        <input oninput="update()" type="checkbox" class="btn-check" id="sp" autocomplete="off">
                         <label class="btn btn-outline-success" for="sp">Speaking</label><br>
 
                       </div></div>
@@ -458,65 +461,8 @@
                     
 
         
-        <!-- ONBOARDNG FORM -->
-        <div>
-            <form>
-              This is the code that adds the student to the database
-              <script>
-                function makeStudent(name,birth,phone,s_email,p_email,link2dash,hours){
-
-
-
-
-
-
-                  console.log('Form submitted! Making student named ' + name);
-                var Airtable = require('airtable');
-                          var base = new Airtable({apiKey: 'pataVafxqtBa32IY1.4d77daf8255f22dcb88dcbde0c14d73bab2654fa0ac7cd7fb42cf92c42a0ae0d'}).base('appDYx7jO383yZXyc');
-
-                          base('Students').create([
-                            {
-                              "fields": {
-                                "Student_Name": name,
-                                "Birthday_Pass": birth,
-                                "Phone": phone,
-                                "Primary_Email": s_email,
-                                "Secondary_Email": p_email,
-                                "Link2dash": link2dash,
-                                "Schedule": hours
-                              }
-                            }                                                  
-                          ], function(err, records) {
-                            if (err) {
-                              console.error(err);
-                              return;
-                            }
-                            records.forEach(function (record) {
-                              console.log(record.getId());
-                            });
-                          });}
-              </script>
-              <div class="form-group mt-3">
-                <label for="usr">Name:</label>
-                <input type="text" class="form-control" id="usr">
-              </div>
-              <div class="form-group mt-3">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              </div>
-              <div class="form-group mt-3">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <div id="calendar"></div>
-                                                      <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-
-
-
-
-        </div>
-        <div class="d-flex align-items-center justify-content-center">                         <p class="mt-5 opacity-50 text-center" style="position: absolute; bottom: 0;">Created by Ibrahim Islam, a student at the University of Houston.</p>
+        
+        <!-- <div class="d-flex align-items-center justify-content-center">                         <p class="mt-5 opacity-50 text-center" style="position: absolute; bottom: 0;">Created by Ibrahim Islam, a student at the University of Houston.</p> -->
         </div>
                        
          </div>
@@ -531,21 +477,21 @@
 
 
 
-  <!-- This is the entire section 1 -->
+  <!-- This is the entire section 3 -->
 <div style="position: relative;">
   <!-- This is the sticky thing at the top -->
-  <div class="container-fluid p-3 sticky-top" style="background: #ffb77360; backdrop-filter: blur(5px);  top:20px;">
+  <div class="container-fluid p-3 sticky-top" style="background: #e5e5e5; backdrop-filter: blur(5px);  top:20px;">
     <div class="row">
       <div class="col-md-2 col-lg-3"></div>
       <div class="col-md-8 col-lg-6 d-flex flex-row flex-md-row align-items-center justify-content-left sticky-top">
-        <div class="text-white d-flex align-items-center justify-content-center mx-2" style="height: 30px; width: 30px; border-radius: 25px; background-color: rgb(255, 115, 0);"><p class="mb-0 h6">1</p></div>
+        <div class="text-white d-flex align-items-center justify-content-center mx-2" style="height: 30px; width: 30px; border-radius: 25px; background-color: rgb(0, 0, 0);"><p class="mb-0 h6">3</p></div>
       <h3 class="mb-0 h3 fw-bold">&nbsp; Account Details</h3></div>
     </div>
 
     
     </div>
 
-  <!-- This is the body of section 1 -->
+  <!-- This is the body of section 3 -->
   <div class="container">    
     <div class="row pt-5">
         <!-- Main breakdown into 2margin - 8content - 2margin on medium screens and above otherwise full width using bootstrap-->
@@ -553,125 +499,78 @@
       <div class="col-md-8 px-4 col-lg-6 mb-5 pb-5">
         <!-- EXPLANATION -->
         
-        
-                    <div class="container m-0 p-0">
-                      <h2 class="h5 text-left ms-1">Days of the Week:</h2>
-                        <div class="d-flex flex-row justify-content-left" style="flex-wrap: wrap;">
-                          <div class="d-flex flex-row justify-content-center">
-                          <input onclick="update()" type="checkbox" class="btn-check" id="sunday" autocomplete="off">
-                          <label class="btn btn-outline-success circle" for="sunday">Su</label><br>
-                          <input onclick="update()" type="checkbox" class="btn-check" id="monday" autocomplete="off">
-                          <label class="btn btn-outline-success circle" for="monday">M</label><br>
-                          <input onclick="update()" type="checkbox" class="btn-check" id="tuesday" autocomplete="off">
-                          <label class="btn btn-outline-success circle" for="tuesday">T</label><br>
-                          <input onclick="update()" type="checkbox" class="btn-check" id="wednesday" autocomplete="off">
-                          <label class="btn btn-outline-success circle" for="wednesday">W</label><br></div>
-                          <div class="d-flex flex-row justify-content-center">
-                          <input onclick="update()" type="checkbox" class="btn-check" id="thursday" autocomplete="off">
-                          <label class="btn btn-outline-success circle" for="thursday">Th</label><br>
-                          <input onclick="update()" type="checkbox" class="btn-check" id="friday" autocomplete="off">
-                          <label class="btn btn-outline-success circle" for="friday">F</label><br>
-                          <input onclick="update()" type="checkbox" class="btn-check" id="saturday" autocomplete="off">
-                          <label class="btn btn-outline-success circle" for="saturday">Sa</label><br>
-                          </div></div>
-                          <style>
-                            .circle{
-                              border-radius: 50px;
-                              height: 40px;
-                              width:40px;
-                              padding:8px 5px;
-                              margin-right: 10px;
-                              
+        <!-- ONBOARDNG FORM -->
+        <div>
+          <form>
+            <script>
+              function makeStudent(name,birth,s_email,hours){
+
+                console.log('Form submitted! Making student named ' + name);
+              var Airtable = require('airtable');
+                        var base = new Airtable({apiKey: 'pataVafxqtBa32IY1.4d77daf8255f22dcb88dcbde0c14d73bab2654fa0ac7cd7fb42cf92c42a0ae0d'}).base('appDYx7jO383yZXyc');
+
+                        base('Students').create([
+                          {
+                            "fields": {
+                              "Student_Name": name,
+                              "Birthday_Pass": birth,
+                              "Primary_Email": s_email,
+                              "Schedule": hours,
+                              "Select": 'Needs Teacher'
                             }
-                            :root{
-                            --bs-primary: orange;}
-                            .form-range::-webkit-slider-thumb{
-                              background-color: orange;
-                            }
-
-                          </style>
-                          <p class="baby ms-2 mt-2">You selected <span id="days" class="fw-bold">blablabla</span></p>
-                          <!-- <script>function update(){
-                            const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
-                            for (x in days){
-                            if (document.getElementById(days[x].toString()).checked == true){
-                                activedays.append(days[x])
-                            }
-                            document.getElementById('days').innerHTML=activedays
-                            }}</script> -->
-
-                          <style>
-                            .baby{
-                              -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    font: inherit;
-    box-sizing: inherit;
-    font-size: 0.625rem;
-    color: #4E5562 !important;
-                            }
-                          </style>
-                                                    <script src="onboard.js"></script>
-
-                        
-                      
-                      <h2 class="h5 text-left mt-5">Set the Session Length: <span class="fw-bold" style="color: #008545;""> <span id="hours">45</span> minutes</span></h2>
-                      <input oninput="update()" type="range" class="form-range mt-0" min="0.25" max="1.5" step="0.25" id="sessionLength">
-
-                      <h5 class="h5">Total: <span id="total">0</span> minutes per week</h5>
-
-                      <div class="row">
-
-                      </div>
-                      
-                      
-                    <div class="col-12 d-flex flex-column align-items-center">
-                      <!-- <h3 class="h3" style="margin-top:150px">Ready for the Beta?</h3> -->
-                      
-                      <style>
-                      
-                      #rainbow:hover{
-                        transform: scale(1.3); 
-
-                        }
-                      @keyframes gradient {
-                        0% {
-                            background-position: 0% 50%;
-                        }
-                        50% {
-                            background-position: 100% 50%;
-                        }
-                        100% {
-                            background-position: 0% 50%;
-                        }
-                        
-                    }</style>
-                      <script>
-                        function yay(){
-                        var duration = 5 * 1000;
-                        var animationEnd = Date.now() + duration;
-                        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-                        function randomInRange(min, max) {
-                          return Math.random() * (max - min) + min;
-                        }
-
-                        var interval = setInterval(function() {
-                          var timeLeft = animationEnd - Date.now();
-
-                          if (timeLeft <= 0) {
-                            return clearInterval(interval);
+                          }                                                  
+                        ], function(err, records) {
+                          if (err) {
+                            console.error(err);
+                            return;
                           }
+                          records.forEach(function (record) {
+                            console.log(record.getId());
+                            console.log(record.fields.Link2dash);
+                            uRL = record.fields.Link2dash
+                            window.location.href = uRL;
 
-                          var particleCount = 50 * (timeLeft / duration);
-                          // since particles fall down, start a bit higher than random
-                          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-                          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-                        }, 250);}
-                      </script>
 
-                    </div>
-                    
-                    </div>
+                          });
+                        });}
+            </script>
+            <div class="form-group mt-3">
+              <label for="usr">Name:</label>
+              <input oninput="update()" type="text" class="form-control" id="usr">
+            </div>
+            <div class="form-group mt-3">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="eemail" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="alert alert-primary mt-3" role="alert">
+              No need for password resets! Easy login with the student's birthday.
+            </div>
+            <div class="form-group mt-3">
+              <label for="exampleInputPassword1">Password (Student Birthday)</label>
+              <input type="date" class="form-control" id="bday" placeholder="Password">
+            </div>
+            
+
+
+            <!-- <div id="calendar"></div> -->
+          </form>
+
+
+
+
+      </div>
+      <div class="container p-5 my-5 border rounded">
+        <h1>Confirm your details</h1>
+        <p id="summary"><span id="namee"> Ibrahim Islam </span>
+          has class on <span id="days2" class="fw-bold"> Thursday, Monday, and Friday </span>
+          at <span id="time"> 11:30 </span> cst
+          for <span id="updateLength"> 45</span> minutes
+          with the Language Basics curriculum, 
+          focusing on <span id="foocus"> Reading, Speaking, and Writing.</span> </p>
+          <button onclick="makeStudent(document.getElementById('namee').innerText,document.getElementById('bday').value,document.getElementById('eemail').value,document.getElementById('summary').innerText)" type="submit" class="btn btn-primary">Submit</button>
+        </div></div>
+          
+      </div>
         
         </div>
                        
@@ -679,6 +578,7 @@
       <div class="col-md-2 col-lg-3 d-print-none"></div>
 
     </div>
+    
     </div>
   <script>
     var DateTime = luxon.DateTime;
@@ -746,7 +646,7 @@
                                           <h3>The Unit 1&nbsp; <span class="badge text-bg-warning">Beta</span></h3>
                                           <p>The very first unit in about <b>conversational foundations.</b>  </p>
                                         </div> -->
-                                      
+                                        <script src="onboard.js"></script>                     
 </body>
 <!-- <div id="calendar"></div> -->
 
