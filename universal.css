@@ -1,0 +1,38 @@
+/* Only the areas where Bootstrap didn't cut it */
+
+ol > li::marker{
+	content: '';
+
+}
+ol > li::before{
+	counter-increment: circle;
+	content: counter(circle);
+	position: absolute;
+	left: 0;
+	font-weight: 700;
+	/*👉background-color: #F3F4F5;👈*/
+	background-color: rgba(249, 242, 228, 0.397);
+	border-radius: 100px;
+	width: 26px;
+	height: 26px;
+	text-align: center;
+	line-height: 26px;
+}
+
+ol::before{
+	counter-reset: circle;
+	content: '';
+}
+
+
+ol{
+	padding-left: 35px;
+	margin: 20px 5px;
+	position: relative;
+}
+
+ol > li{
+	/*👉height: 28px;👈*/
+	/*👉line-height: 28px;👈*/
+	margin-bottom: 10px;
+}

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- BOOTSTRAP Latest compiled JavaScript -->
+  <link rel="stylesheet" href="universal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uvarov.frontend/vanilla-calendar@2.2.5/build/vanilla-calendar.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@uvarov.frontend/vanilla-calendar@2.2.5/build/vanilla-calendar.min.js"></script>
+
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="/airtable.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+  
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SHLLXSNFSY"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script src="https://moment.github.io/luxon/global/luxon.js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SHLLXSNFSY');
+</script>
+  <!--<script>"use strict"
+    var button = document.querySelectorAll('[data-id="button"]')
+    var password = document.querySelectorAll('[data-id="password"]')
+
+    function login(secret) {
+      var hash = sha1(secret)
+      var url = hash + "/index.html"
+      var alert = document.querySelectorAll('[data-id="alert"]')
+
+      var request = new XMLHttpRequest()
+      request.open('GET', url, true)
+
+      request.onload = function () {
+        if (request.status >= 200 && request.status < 400) {
+          window.location = url
+        } else {
+          parent.location.hash = hash
+          alert[0].style.display = 'block'
+          password[0].setAttribute('placeholder', 'Incorrect password')
+          password[0].value = ''
+        }
+      }
+      request.onerror = function () {
+        parent.location.hash = hash
+        alert[0].style.display = 'block'
+        password[0].setAttribute('placeholder', 'Incorrect password')
+        password[0].value = ''
+      }
+      request.send()
+    }
+
+    button[0].addEventListener("click", function () {
+      login(password[0].value)
+    })
+
+    document.onkeydown = function (e) {
+      e = e || window.event
+      if (e.keyCode == 13) {
+        login(password[0].value)
+      }
+    }</script>-->
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhalo!Bangla Beta</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body style="position:relative; min-height: 100vh;">
+  <div class="container-fluid d-flex flex-column align-items-center justify-content-center text-white sticky-top" style="height:20px;background: linear-gradient(-45deg, #f0231f, #ee7752, #008545, #6a0174);background-size: 400% 400%;
+  animation: gradient 15s ease infinite; z-index: 9999;"></div>
+  <div>
+  
+  <div class="container-fluid bg-whit pb-5 pt-5" style="background-color: #ffffff81;">
+    <div class="row ">
+      <div class="col-md-2 col-lg-4 d-print-none"></div>
+      <div class="col-md-8 col-lg-4 text-center inline-flex mt-5 mb-5"><img src="Classic Logo.png" alt="..." class="d-inline" style="height: 80px;">
+        <style>.text-bg-warning{background-color: orange !important;
+        }</style>
+        <span class="badge rounded-pill text-bg-warning" style="vertical-align: bottom; position: relative; bottom: -30px; right: 150px; font-size: 20px; margin-right: -70px; opacity: 60%;">Beta</span>
+</div>
+    </div>
+  </div>
+</div>
+<!-- This is the entire section 1 -->
+<div style="position: relative;">
+  <!-- This is the sticky thing at the top -->
+  <div class="container-fluid p-3 sticky-top" style="background: #ffb77360; backdrop-filter: blur(5px);  top:20px;">
+    <div class="row">
+      <div class="col-md-2 col-lg-3"></div>
+      <div class="col-md-8 col-lg-6 d-flex flex-row flex-md-row align-items-center justify-content-left sticky-top">
+        <div class="text-white d-flex align-items-center justify-content-center mx-2" style="height: 30px; width: 30px; border-radius: 25px; background-color: rgb(255, 115, 0);"><p class="mb-0 h6">1</p></div>
+      <h3 class="mb-0 h3 fw-bold">&nbsp; Choose your class schedule</h3></div>
+    </div>
+
+    
+    </div>
+
+  <!-- This is the body of section 1 -->
+  <div class="container">    
+    <div class="row pt-5">
+        <!-- Main breakdown into 2margin - 8content - 2margin on medium screens and above otherwise full width using bootstrap-->
+      <div class="col-md-2 col-lg-3 d-print-none"></div>
+      <div class="col-md-8 px-4 col-lg-6 mb-5 pb-5">
+        <!-- EXPLANATION -->
+        
+        
+                    <div class="container m-0 p-0">
+                      <h2 class="h5 text-left ms-1">Days of the Week:</h2>
+                        <div class="d-flex flex-row justify-content-left" style="flex-wrap: wrap;">
+                          <div class="d-flex flex-row justify-content-center">
+                          <input onclick="update()" type="checkbox" class="btn-check" id="sunday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="sunday">Su</label><br>
+                          <input onclick="update()" type="checkbox" class="btn-check" id="monday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="monday">M</label><br>
+                          <input onclick="update()" type="checkbox" class="btn-check" id="tuesday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="tuesday">T</label><br>
+                          <input onclick="update()" type="checkbox" class="btn-check" id="wednesday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="wednesday">W</label><br></div>
+                          <div class="d-flex flex-row justify-content-center">
+                          <input onclick="update()" type="checkbox" class="btn-check" id="thursday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="thursday">Th</label><br>
+                          <input onclick="update()" type="checkbox" class="btn-check" id="friday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="friday">F</label><br>
+                          <input onclick="update()" type="checkbox" class="btn-check" id="saturday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="saturday">Sa</label><br>
+                          </div></div>
+                          <style>
+                            .circle{
+                              border-radius: 50px;
+                              height: 40px;
+                              width:40px;
+                              padding:8px 5px;
+                              margin-right: 10px;
+                              
+                            }
+                            :root{
+                            --bs-primary: orange;}
+                            .form-range::-webkit-slider-thumb{
+                              background-color: orange;
+                            }
+
+                          </style>
+                          <p class="baby ms-2 mt-2">You selected <span id="days" class="fw-bold">blablabla</span></p>
+                          <!-- <script>function update(){
+                            const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
+                            for (x in days){
+                            if (document.getElementById(days[x].toString()).checked == true){
+                                activedays.append(days[x])
+                            }
+                            document.getElementById('days').innerHTML=activedays
+                            }}</script> -->
+
+                          <style>
+                            .baby{
+                              -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font: inherit;
+    box-sizing: inherit;
+    font-size: 0.625rem;
+    color: #4E5562 !important;
+                            }
+                          </style>
+                                                    <script src="onboard.js"></script>
+
+                        
+                      
+                      <h2 class="h5 text-left mt-5">Set the Session Length: <span class="fw-bold" style="color: #008545;""> <span id="hours">45</span> minutes</span></h2>
+                      <input oninput="update()" type="range" class="form-range mt-0" min="0.25" max="1.5" step="0.25" id="sessionLength">
+
+                      <h5 class="h5">Total: <span id="total">0</span> minutes per week</h5>
+
+                      <div class="row">
+
+                      </div>
+                      
+                      
+                    <div class="col-12 d-flex flex-column align-items-center">
+                      <!-- <h3 class="h3" style="margin-top:150px">Ready for the Beta?</h3> -->
+                      
+                      <style>
+                      
+                      #rainbow:hover{
+                        transform: scale(1.3); 
+
+                        }
+                      @keyframes gradient {
+                        0% {
+                            background-position: 0% 50%;
+                        }
+                        50% {
+                            background-position: 100% 50%;
+                        }
+                        100% {
+                            background-position: 0% 50%;
+                        }
+                        
+                    }</style>
+                      <script>
+                        function yay(){
+                        var duration = 5 * 1000;
+                        var animationEnd = Date.now() + duration;
+                        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+                        function randomInRange(min, max) {
+                          return Math.random() * (max - min) + min;
+                        }
+
+                        var interval = setInterval(function() {
+                          var timeLeft = animationEnd - Date.now();
+
+                          if (timeLeft <= 0) {
+                            return clearInterval(interval);
+                          }
+
+                          var particleCount = 50 * (timeLeft / duration);
+                          // since particles fall down, start a bit higher than random
+                          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+                        }, 250);}
+                      </script>
+
+                    </div>
+                    
+                    </div>
+        
+        </div>
+                       
+         </div>
+      <div class="col-md-2 col-lg-3 d-print-none"></div>
+
+    </div>
+    </div>
+     
+
+    </div>
+
+
+
+<!-- section 2? -->
+    <div style="position: relative;">
+    <div class="container-fluid p-3 sticky-top" style="background: #3da57a53; backdrop-filter: blur(5px); top:20px;">
+      <div class="row">
+        <div class="col-md-2 col-lg-3"></div>
+        <div class="col-md-8 col-lg-6 d-flex flex-row flex-md-row align-items-center justify-content-left sticky-top">
+          <div class="text-white d-flex align-items-center justify-content-center mx-2" style="height: 30px; width: 30px; border-radius: 25px; background-color: rgb(24, 110, 0);"><p class="mb-0 h6">2</p></div>
+        <h3 class="mb-0 h3 fw-bold">&nbsp; Choose your curriculum focus</h3></div>
+      </div>
+  
+      
+      </div>
+       <!-- This is hte body of section 2 -->
+  <div class="container-fluid">    
+    <div class="row pt-5">
+        <!-- Main breakdown into 2margin - 8content - 2margin on medium screens and above otherwise full width using bootstrap-->
+      <div class="col-md-2 col-lg-3 d-print-none"></div>
+      <div class="col-md-8 px-4 col-lg-6 mb-5 pb-5">
+        <!-- EXPLANATION -->
+        
+        
+                    <div class="container">
+                      <h2 class="h5 ms-1">Student Proficiency:</h2>
+                        <div class="d-flex flex-row justify-content-left p-0 m-0">
+                          <input type="radio" class="btn-check blackk" name="options-outlined" id="success-outlined" autocomplete="off" checked>
+<label onclick="setToSelf('Beginner')" class="btn btn-outline-secondary box blacky" for="success-outlined">
+  <div style="height:75px">  <svg width="100%" height="100%" viewBox="0 0 120 120" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M21 76.09a1 1 0 011-1h21.182a1 1 0 011 1v21.183a1 1 0 01-1 1H22a1 1 0 01-1-1V76.09z" fill="var(--testing)"></path><path opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" d="M48.045 76.09a1 1 0 011-1h21.182a1 1 0 011 1v21.183a1 1 0 01-1 1H49.045a1 1 0 01-1-1V76.09zM75.09 76.093a1 1 0 011-1h21.182a1 1 0 011 1v21.182a1 1 0 01-1 1H76.09a1 1 0 01-1-1V76.093zM48.045 49.046a1 1 0 011-1h21.182a1 1 0 011 1v21.182a1 1 0 01-1 1H49.045a1 1 0 01-1-1V49.046zM75.09 49.046a1 1 0 011-1h21.182a1 1 0 011 1v21.182a1 1 0 01-1 1H76.091a1 1 0 01-1-1V49.046zM75.09 22a1 1 0 011-1h21.182a1 1 0 011 1v21.182a1 1 0 01-1 1H76.091a1 1 0 01-1-1V22z" fill="#000000"></path></svg>
+  </div>
+  Beginner
+</label>
+
+<input onclick="setToSelf('Medium')" type="radio" class="btn-check blackk" name="options-outlined" id="danger-outlined" autocomplete="off">
+<label  class="btn btn-outline-secondary box blacky" for="danger-outlined">
+  <div style="height:75px"><svg width="100%" height="100%" viewBox="0 0 120 120" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.5 75.998a1 1 0 011-1H44a1 1 0 011 1v20.5a1 1 0 01-1 1H23.5a1 1 0 01-1-1v-20.5zM48.75 75.998a1 1 0 011-1h20.5a1 1 0 011 1v20.5a1 1 0 01-1 1h-20.5a1 1 0 01-1-1v-20.5z" fill="var(--testing)"></path><path opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" d="M75 76a1 1 0 011-1h20.5a1 1 0 011 1v20.5a1 1 0 01-1 1H76a1 1 0 01-1-1V76z" fill="#000000"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M48.75 49.748a1 1 0 011-1h20.5a1 1 0 011 1v20.5a1 1 0 01-1 1h-20.5a1 1 0 01-1-1v-20.5z" fill="var(--testing)"></path><path opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" d="M75 49.748a1 1 0 011-1h20.5a1 1 0 011 1v20.5a1 1 0 01-1 1H76a1 1 0 01-1-1v-20.5zM75 23.498a1 1 0 011-1h20.5a1 1 0 011 1v20.5a1 1 0 01-1 1H76a1 1 0 01-1-1v-20.5z" fill="#000000"></path></svg></div>
+  Medium</label>
+
+<input onclick="setToSelf('Advanced')" type="radio" class="btn-check blackk" name="options-outlined" id="danger-outlined2" autocomplete="off">
+<label  class="btn btn-outline-secondary box blacky" for="danger-outlined2"><div style="height:75px"><svg width="100%" height="100%" viewBox="0 0 120 120" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.5 75.998a1 1 0 011-1H44a1 1 0 011 1v20.5a1 1 0 01-1 1H23.5a1 1 0 01-1-1v-20.5zM48.75 75.998a1 1 0 011-1h20.5a1 1 0 011 1v20.5a1 1 0 01-1 1h-20.5a1 1 0 01-1-1v-20.5zM75 76a1 1 0 011-1h20.5a1 1 0 011 1v20.5a1 1 0 01-1 1H76a1 1 0 01-1-1V76zM48.75 49.748a1 1 0 011-1h20.5a1 1 0 011 1v20.5a1 1 0 01-1 1h-20.5a1 1 0 01-1-1v-20.5zM75 49.748a1 1 0 011-1h20.5a1 1 0 011 1v20.5a1 1 0 01-1 1H76a1 1 0 01-1-1v-20.5zM75 23.498a1 1 0 011-1h20.5a1 1 0 011 1v20.5a1 1 0 01-1 1H76a1 1 0 01-1-1v-20.5z" fill="var(--testing)"></path></svg></div>
+  Advanced</label>
+
+                         
+
+                        </div>
+                          <style>
+                            label.btn.blacky{
+                              border: solid lightgray 5px;
+                              background-color: white;
+                              --testing:black;
+                              
+
+                            }
+                            .btn-check.blackk:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+                              border: solid orange 5px;
+                              background-color: white;
+                              --testing: orange;
+
+                              color: orangered;
+                            }
+                            .btn-check.unit{
+                              border: solid white 5px;
+                            }
+                            .btn-check.unit:checked +label{
+                              outline: solid black 5px;
+                            }
+                            .box{
+                              width: 100px;
+                              height:130px;
+                              margin-right: 15px;
+                            }
+
+                            
+                          </style>
+                          <style>
+                            .circle{
+                              border-radius: 50px;
+                              height: 40px;
+                              width:40px;
+                              padding:8px 5px;
+                              margin-right: 10px;
+                              
+                            }
+                            :root{
+                            --bs-primary: orange;}
+                            .form-range::-webkit-slider-thumb{
+                              background-color: orange;
+                            }
+
+                          </style>
+                          <p class="baby ms-2 mt-2">You selected <span id="prof" class="fw-bold">Beginner</span></p>
+                          <!-- <script>function update(){
+                            const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
+                            for (x in days){
+                            if (document.getElementById(days[x].toString()).checked == true){
+                                activedays.append(days[x])
+                            }
+                            document.getElementById('days').innerHTML=activedays
+                            }}</script> -->
+
+                          <style>
+                            .baby{
+                              -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font: inherit;
+    box-sizing: inherit;
+    font-size: 0.625rem;
+    color: #4E5562 !important;
+                            }
+                          </style>
+                                                    <script src="onboard.js"></script>
+
+                        
+                      
+                      <h2 class="h5 text-left mt-5">Which Curriculum? </h2>
+                      <div class="card mb-5">
+                        <div class="card-body">
+                          At this point, only <span class="badge rounded-pill" style="background-color: #F0C433; color: black;">Unit 1 Language Basics</span>
+                          is avaliable. More units will be avaliable next month.
+                        </div>
+                      </div>
+
+                      
+                      <!-- unit container -->
+                      <div class="container-fluid m-0 p-0" >
+                        <!-- unit 1 dad -->
+                        <div class="row row-cols-1 row-cols-md-2">
+                        <!-- unit 1 -->
+                        <div class="col">
+                          <input onclick="setToSelf2(1)" type="radio" class="btn-check unit" id="unit1" name="units">
+                        <label style="min-width:240px; height: 112px;text-align: left; background-color: #F0C433; border:none;" class="btn btn-outline-secondary d-flex flex-row m-0 p-0 me-3 mb-3 justify-content-between" for="unit1">
+                        <div class="ps-3 pt-2"><p class="fw-bold m-0 p-0 text-white">Unit 1</p><p class="m-0 p-0 text-white" style="font-size: larger; line-height: 20px;">Language Basics</p><span class="badge rounded-pill text-bg-success mt-2">Recommended</span>
+                        </div>
+                        <div>
+                          <img style="height: 112px;"aria-label="unit icon" loading="lazy" type="badge" src="https://resources.rosettastone.com/rs/zoom/app/static/media/unit_1.34b2ffd5.png" class="css-1ugv3eq">
+                        </div>
+                        </label>
+                        </div>
+                        
+                        <div class="col">
+                        <input disabled type="radio" class="btn-check unit" id="unit2" name="units">
+                        <label style="min-width:240px; max-width:100% height: 112px;text-align: left; background-color: #B0C946; border:none;" class="btn btn-outline-secondary d-flex flex-row m-0 p-0 me-3 mb-3 justify-content-between" for="unit2">
+                        <div class="ps-3 pt-2"><p class="fw-bold m-0 p-0 text-white">Unit 2</p><p class="m-0 p-0 text-white" style="font-size: large; line-height: 20px;">Greetings and Introductions</p></div>
+                        <div>
+                          <img style="height: 112px;"aria-label="unit icon" loading="lazy" type="badge" src="https://resources.rosettastone.com/rs/zoom/app/static/media/unit_2.b965eb83.png" class="css-1ugv3eq">
+                        </div>
+                        </label>
+                      </div>
+
+                      <div class="col">
+
+                        <input disabled type="radio" class="btn-check unit" id="unit3" name="units">
+                        <label style="min-width:240px; height: 112px;text-align: left; background-color: #DC4827; border:none;" class="btn btn-outline-secondary d-flex flex-row m-0 p-0 me-3 mb-3 justify-content-between" for="unit3">
+                        <div class="ps-3 pt-2"><p class="fw-bold m-0 p-0 text-white">Unit 3</p><p class="m-0 p-0 text-white" style="font-size: larger; line-height: 20px;">Work and School</p></div>
+                        <div>
+                          <img style="height: 112px;"aria-label="unit icon" loading="lazy" type="badge" src="data:image/png;base64,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" class="css-1ugv3eq">
+                        </div>
+                        </label>
+
+                      </div>
+
+                      <div class="col">
+                        <input disabled type="radio" class="btn-check unit" id="unit4" name="units">
+                        <label style="min-width:240px; height: 112px;text-align: left; background-color: #92CADB; border:none;" class="btn btn-outline-secondary d-flex flex-row m-0 p-0 me-3 mb-3 justify-content-between" for="unit4">
+                        <div class="ps-3 pt-2"><p class="fw-bold m-0 p-0 text-white">Unit 4</p><p class="m-0 p-0 text-white" style="font-size: larger; line-height: 20px;">Shopping</p></div>
+                        <div>
+                          <img style="height: 112px;"aria-label="unit icon" loading="lazy" type="badge" src="https://resources.rosettastone.com/rs/zoom/app/static/media/unit_4.377cd2ad.png" class="css-1ugv3eq">
+                        </div>
+                        </label>
+                        </div>
+                        
+
+
+                        
+                        
+                      
+                          
+                          
+                          </div>
+                      </div>
+
+                      <p class="baby ms-2 mt-2">You selected <span id="curriculum" class="fw-bold">Language Basics</span></p>
+
+
+                      <h2 class="h2 text-left mt-5">Focuses:</h2>
+                      <p class="mb-1">Select all that apply:</p>
+                      <div class="d-flex flex-row">
+                      <div class="me-2">
+                        <input type="checkbox" class="btn-check" id="rd" autocomplete="off">
+                        <label class="btn btn-outline-success" for="rd">Reading</label><br>
+
+                      </div><div class="me-2">
+                        <input type="checkbox" class="btn-check" id="wr" autocomplete="off">
+                        <label class="btn btn-outline-success" for="wr">Writing</label><br>
+
+                      </div><div class="me-2">
+                        <input type="checkbox" class="btn-check" id="li" autocomplete="off">
+                        <label class="btn btn-outline-success" for="li">Listening</label><br>
+
+                      </div><div class="me-2">
+                        <input type="checkbox" class="btn-check" id="sp" autocomplete="off">
+                        <label class="btn btn-outline-success" for="sp">Speaking</label><br>
+
+                      </div></div>
+
+                      
+                      
+                    
+                    </div>
+                    
+                    
+
+        
+        <!-- ONBOARDNG FORM -->
+        <div>
+            <form>
+              This is the code that adds the student to the database
+              <script>
+                function makeStudent(name,birth,phone,s_email,p_email,link2dash,hours){
+
+
+
+
+
+
+                  console.log('Form submitted! Making student named ' + name);
+                var Airtable = require('airtable');
+                          var base = new Airtable({apiKey: 'pataVafxqtBa32IY1.4d77daf8255f22dcb88dcbde0c14d73bab2654fa0ac7cd7fb42cf92c42a0ae0d'}).base('appDYx7jO383yZXyc');
+
+                          base('Students').create([
+                            {
+                              "fields": {
+                                "Student_Name": name,
+                                "Birthday_Pass": birth,
+                                "Phone": phone,
+                                "Primary_Email": s_email,
+                                "Secondary_Email": p_email,
+                                "Link2dash": link2dash,
+                                "Schedule": hours
+                              }
+                            }                                                  
+                          ], function(err, records) {
+                            if (err) {
+                              console.error(err);
+                              return;
+                            }
+                            records.forEach(function (record) {
+                              console.log(record.getId());
+                            });
+                          });}
+              </script>
+              <div class="form-group mt-3">
+                <label for="usr">Name:</label>
+                <input type="text" class="form-control" id="usr">
+              </div>
+              <div class="form-group mt-3">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              </div>
+              <div class="form-group mt-3">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div id="calendar"></div>
+                                                      <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+
+
+
+        </div>
+        <div class="d-flex align-items-center justify-content-center">                         <p class="mt-5 opacity-50 text-center" style="position: absolute; bottom: 0;">Created by Ibrahim Islam, a student at the University of Houston.</p>
+        </div>
+                       
+         </div>
+      <div class="col-md-2 col-lg-3 d-print-none"></div>
+
+    </div>
+    </div>
+    </div>
+
+
+  </div>
+
+
+
+  <!-- This is the entire section 1 -->
+<div style="position: relative;">
+  <!-- This is the sticky thing at the top -->
+  <div class="container-fluid p-3 sticky-top" style="background: #ffb77360; backdrop-filter: blur(5px);  top:20px;">
+    <div class="row">
+      <div class="col-md-2 col-lg-3"></div>
+      <div class="col-md-8 col-lg-6 d-flex flex-row flex-md-row align-items-center justify-content-left sticky-top">
+        <div class="text-white d-flex align-items-center justify-content-center mx-2" style="height: 30px; width: 30px; border-radius: 25px; background-color: rgb(255, 115, 0);"><p class="mb-0 h6">1</p></div>
+      <h3 class="mb-0 h3 fw-bold">&nbsp; Account Details</h3></div>
+    </div>
+
+    
+    </div>
+
+  <!-- This is the body of section 1 -->
+  <div class="container">    
+    <div class="row pt-5">
+        <!-- Main breakdown into 2margin - 8content - 2margin on medium screens and above otherwise full width using bootstrap-->
+      <div class="col-md-2 col-lg-3 d-print-none"></div>
+      <div class="col-md-8 px-4 col-lg-6 mb-5 pb-5">
+        <!-- EXPLANATION -->
+        
+        
+                    <div class="container m-0 p-0">
+                      <h2 class="h5 text-left ms-1">Days of the Week:</h2>
+                        <div class="d-flex flex-row justify-content-left" style="flex-wrap: wrap;">
+                          <div class="d-flex flex-row justify-content-center">
+                          <input onclick="update()" type="checkbox" class="btn-check" id="sunday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="sunday">Su</label><br>
+                          <input onclick="update()" type="checkbox" class="btn-check" id="monday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="monday">M</label><br>
+                          <input onclick="update()" type="checkbox" class="btn-check" id="tuesday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="tuesday">T</label><br>
+                          <input onclick="update()" type="checkbox" class="btn-check" id="wednesday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="wednesday">W</label><br></div>
+                          <div class="d-flex flex-row justify-content-center">
+                          <input onclick="update()" type="checkbox" class="btn-check" id="thursday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="thursday">Th</label><br>
+                          <input onclick="update()" type="checkbox" class="btn-check" id="friday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="friday">F</label><br>
+                          <input onclick="update()" type="checkbox" class="btn-check" id="saturday" autocomplete="off">
+                          <label class="btn btn-outline-success circle" for="saturday">Sa</label><br>
+                          </div></div>
+                          <style>
+                            .circle{
+                              border-radius: 50px;
+                              height: 40px;
+                              width:40px;
+                              padding:8px 5px;
+                              margin-right: 10px;
+                              
+                            }
+                            :root{
+                            --bs-primary: orange;}
+                            .form-range::-webkit-slider-thumb{
+                              background-color: orange;
+                            }
+
+                          </style>
+                          <p class="baby ms-2 mt-2">You selected <span id="days" class="fw-bold">blablabla</span></p>
+                          <!-- <script>function update(){
+                            const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
+                            for (x in days){
+                            if (document.getElementById(days[x].toString()).checked == true){
+                                activedays.append(days[x])
+                            }
+                            document.getElementById('days').innerHTML=activedays
+                            }}</script> -->
+
+                          <style>
+                            .baby{
+                              -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font: inherit;
+    box-sizing: inherit;
+    font-size: 0.625rem;
+    color: #4E5562 !important;
+                            }
+                          </style>
+                                                    <script src="onboard.js"></script>
+
+                        
+                      
+                      <h2 class="h5 text-left mt-5">Set the Session Length: <span class="fw-bold" style="color: #008545;""> <span id="hours">45</span> minutes</span></h2>
+                      <input oninput="update()" type="range" class="form-range mt-0" min="0.25" max="1.5" step="0.25" id="sessionLength">
+
+                      <h5 class="h5">Total: <span id="total">0</span> minutes per week</h5>
+
+                      <div class="row">
+
+                      </div>
+                      
+                      
+                    <div class="col-12 d-flex flex-column align-items-center">
+                      <!-- <h3 class="h3" style="margin-top:150px">Ready for the Beta?</h3> -->
+                      
+                      <style>
+                      
+                      #rainbow:hover{
+                        transform: scale(1.3); 
+
+                        }
+                      @keyframes gradient {
+                        0% {
+                            background-position: 0% 50%;
+                        }
+                        50% {
+                            background-position: 100% 50%;
+                        }
+                        100% {
+                            background-position: 0% 50%;
+                        }
+                        
+                    }</style>
+                      <script>
+                        function yay(){
+                        var duration = 5 * 1000;
+                        var animationEnd = Date.now() + duration;
+                        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+                        function randomInRange(min, max) {
+                          return Math.random() * (max - min) + min;
+                        }
+
+                        var interval = setInterval(function() {
+                          var timeLeft = animationEnd - Date.now();
+
+                          if (timeLeft <= 0) {
+                            return clearInterval(interval);
+                          }
+
+                          var particleCount = 50 * (timeLeft / duration);
+                          // since particles fall down, start a bit higher than random
+                          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+                        }, 250);}
+                      </script>
+
+                    </div>
+                    
+                    </div>
+        
+        </div>
+                       
+         </div>
+      <div class="col-md-2 col-lg-3 d-print-none"></div>
+
+    </div>
+    </div>
+  <script>
+    var DateTime = luxon.DateTime;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const calend = new VanillaCalendar('#calendar', {
+	date: {
+		min: new Date().setDate(1),
+    max: new DateTime.now().plus({ months: 3 }).toString(),
+	},
+  settings: {
+    selection: {
+			day: 'multiple',
+      
+			time: true,
+      controlTime: 'all',
+      stepMinutes: 15,
+      dates: ['2022-08-10', '2022-08-12', '2022-08-13'],
+
+
+		},
+    visibility: {
+			weekend: false,
+      disabled: true,
+
+		},
+    iso8601:true,
+		range: {
+      enabled: [new DateTime.now().toISODate(),new DateTime.now().plus({ days: 2 }).toISODate()],
+			min: new Date().setDate(1),
+			max: new DateTime.now().plus({ months: 2 }).toString(),
+		},
+		selected: {
+			year: 2023,
+			month: 1,
+      time: '03:00 PM',
+		},
+	},
+  actions: {
+		clickDay(event, dates) {
+			document.getElementById('inputdate').value = dates;
+      console.log(dates)
+		},
+	},
+});
+    calend.init(); });</script>
+  <!-- <script>
+    var converter = new showdown.Converter();
+    elements      = document.getElementsByTagName('markdown')
+    elements.forEach((hi)=>{
+      console.log(value)
+      console.log(index)
+      console.log(array)
+    }
+  
+    // for (ele in elements){
+    //   text = ele.innerhtml
+    //   html      = converter.makeHtml(text);
+    //   ele.innerHTML = html;
+    // }
+    
+</script> -->
+<!-- <div class="container p-4 pb-1 mt-4 bg-dark text-white rounded" style="--bs-dark-rgb: 206, 111, 4;">
+                                          
+                                          <h3>The Unit 1&nbsp; <span class="badge text-bg-warning">Beta</span></h3>
+                                          <p>The very first unit in about <b>conversational foundations.</b>  </p>
+                                        </div> -->
+                                      
+</body>
+<!-- <div id="calendar"></div> -->
+
+</html>
+
+
