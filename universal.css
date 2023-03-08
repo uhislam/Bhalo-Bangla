@@ -36,3 +36,9 @@ ol > li{
 	/*👉line-height: 28px;👈*/
 	margin-bottom: 10px;
 }
+
+input.form-control{
+	box-shadow: inset 0px 1px 3px rgb(0 0 0 / 15%) !important;
+	background-color: #F3F6F9 !important;
+	margin-bottom: 1rem;
+}
