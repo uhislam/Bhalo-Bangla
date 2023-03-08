@@ -84,7 +84,7 @@
   <div class="container-fluid bg-whit pb-5 pt-5" style="background-color: #ffffff81;">
     <div class="row ">
       <div class="col-md-2 col-lg-4 d-print-none"></div>
-      <div class="col-md-8 col-lg-4 text-center inline-flex mt-5 mb-5"><img src="Classic Logo.png" alt="..." class="d-inline" style="height: 80px;">
+      <div class="col-md-8 col-lg-4 text-center inline-flex mt-5 mb-5"><img src="/Classic Logo.png" alt="..." class="d-inline" style="height: 80px;">
         <style>.text-bg-warning{background-color: orange !important;
         }</style>
         <span class="badge rounded-pill text-bg-warning" style="vertical-align: bottom; position: relative; bottom: -30px; right: 150px; font-size: 20px; margin-right: -70px; opacity: 60%;">Beta</span>
@@ -509,7 +509,8 @@
               var Airtable = require('airtable');
                         var base = new Airtable({apiKey: 'pataVafxqtBa32IY1.4d77daf8255f22dcb88dcbde0c14d73bab2654fa0ac7cd7fb42cf92c42a0ae0d'}).base('appDYx7jO383yZXyc');
 
-                        base('Students').create([
+                        base
+                        ('Students').create([
                           {
                             "fields": {
                               "Student_Name": name,
