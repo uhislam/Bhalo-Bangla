@@ -9,7 +9,7 @@ const {
 
 //   cool auto login feature added
 if (sessionStorage.user !== undefined && pathname=='/dash/'){
-    base('Accounts').find(sessionStorage.user.toString(), function(err, record) {
+    base('Students').find(sessionStorage.user.toString(), function(err, record) {
         if (err) { console.error(err); return; }
         console.log('Loggin in as', record);
         window.location.href =  record.fields.Link2dash
@@ -21,7 +21,7 @@ if (sessionStorage.user !== undefined && pathname=='/dash/'){
 var Airtable = require('airtable');
 var base = new Airtable({apiKey: 'pataVafxqtBa32IY1.4d77daf8255f22dcb88dcbde0c14d73bab2654fa0ac7cd7fb42cf92c42a0ae0d'}).base('appDYx7jO383yZXyc');
 var studentArray = []
-base('Accounts').select({
+base('Students').select({
     // Selecting the first 3 records in All Students:
     maxRecords: 100,
     view: "students"
