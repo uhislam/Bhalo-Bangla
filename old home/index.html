@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- BOOTSTRAP Latest compiled JavaScript -->
+  <link rel="stylesheet" href="universal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uvarov.frontend/vanilla-calendar@2.2.5/build/vanilla-calendar.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@uvarov.frontend/vanilla-calendar@2.2.5/build/vanilla-calendar.min.js"></script>
+
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="/airtable.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SHLLXSNFSY"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SHLLXSNFSY');
+</script>
+  <!--<script>"use strict"
+    var button = document.querySelectorAll('[data-id="button"]')
+    var password = document.querySelectorAll('[data-id="password"]')
+
+    function login(secret) {
+      var hash = sha1(secret)
+      var url = hash + "/index.html"
+      var alert = document.querySelectorAll('[data-id="alert"]')
+
+      var request = new XMLHttpRequest()
+      request.open('GET', url, true)
+
+      request.onload = function () {
+        if (request.status >= 200 && request.status < 400) {
+          window.location = url
+        } else {
+          parent.location.hash = hash
+          alert[0].style.display = 'block'
+          password[0].setAttribute('placeholder', 'Incorrect password')
+          password[0].value = ''
+        }
+      }
+      request.onerror = function () {
+        parent.location.hash = hash
+        alert[0].style.display = 'block'
+        password[0].setAttribute('placeholder', 'Incorrect password')
+        password[0].value = ''
+      }
+      request.send()
+    }
+
+    button[0].addEventListener("click", function () {
+      login(password[0].value)
+    })
+
+    document.onkeydown = function (e) {
+      e = e || window.event
+      if (e.keyCode == 13) {
+        login(password[0].value)
+      }
+    }</script>-->
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhalo!Bangla Beta</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body style="position:relative; min-height: 100vh;">
+  <div style="z-index: -1; position: absolute; bottom:0; left:0; right:0; height: 200px; background-image: linear-gradient(to top, #07533281, #ffffff00);"></div>
+
+  <!-- Aesthetic gradient at top -->
+  <div style="z-index: -1; position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(160deg,#fff0d2,#e4feff);"></div>
+
+
+  <!-- Aesthetic gradient at bottom -->
+
+  <!-- Everything REAL in a container -->
+  <div class="container">
+    <div class="row pt-5">
+        <!-- Main breakdown into 2margin - 8content - 2margin on medium screens and above otherwise full width using bootstrap-->
+      <div class="col-md-2 col-lg-3 d-print-none"></div>
+      <div class="col-md-8 px-4 col-lg-6 mb-5 pb-5">
+        <!-- EXPLANATION -->
+        
+        
+                    <div class="container">
+                      <div class="text-center inline-flex mt-5">
+                        <img src="Classic Logo.png" alt="..." class="d-inline" style="height: 80px;">
+                        <style>.text-bg-warning{background-color: orange !important;
+                        }</style>
+                        <span class="badge rounded-pill text-bg-warning" style="vertical-align: bottom; position: relative; bottom: -30px; right: 150px; font-size: 20px; margin-right: -70px; opacity: 60%;">Beta</span>
+              
+                        <!-- <h1 class="my-3" style="font-size: 2.5em;">Welcome to Beta! 😎</h1> -->
+                        <h1 class="d-inline"></h1>
+                      </div>
+                      <!-- explanations for betas -->
+                      <!-- <markdown style="display: none;">![Showdown][sd-logo]
+              
+              Showdown is a <mark> Javascript Markdown to HTML converter</mark>, based on the original works by John Gruber. It can be used client side (in the browser) or server side (with Node or io). 
+              
+              
+              # Installation
+              <fart>trest</fart>
+              ## Download tarball
+              
+              You can download the latest release tarball directly from [releases][releases]
+              
+              ## Bowd
+              
+                  bower install showdown
+              
+              ## npm (server-side)
+              
+                  npm install showdown
+              
+              ## CDN
+              
+              You can also use one of several CDNs available: 
+              
+              * rawgit CDN
+              
+                      https://cdn.rawgit.com/showdownjs/showdown/jj/dist/showdown.min.js
+              
+              * cdnjs
+              
+                      https://cdnjs.cloudflare.com/ajax/libs/showdown/nn/showdown.min.js
+              
+              
+              [sd-logo]: https://raw.githubusercontent.com/showdownjs/logo/master/dist/logo.readme.png
+              [releases]: https://github.com/showdownjs/showdown/releases
+              [atx]: http://www.aaronsw.com/2002/atx/intro
+              [setext]: https://en.wikipedia.org/wiki/Setext
+              
+              ---------
+              
+              # Syntax
+              
+              
+              
+              ## Table of contents
+              
+              - [Introduction](#introduction)
+              - [Paragraphs](#paragraphs)
+              - [Headings](#headings)
+                  * [Atx Style](#atx-style)
+                  * [Setext style](#setext-style)
+                  * [Header IDs](#header-ids)
+              - [Blockquotes](#blockquotes)
+              - [Bold and Italic](#bold-and-italic)
+              - [Strikethrough](#strikethrough)
+              - [Emojis](#emojis)
+              - [Code formatting](#code-formatting)
+                  * [Inline formats](#inline-formats)
+                  * [Multiple lines](#multiple-lines)
+              - [Lists](#lists)
+                  * [Unordered lists](#unordered-lists)
+                  * [Ordered lists](#ordered-lists)
+                  * [TaskLists (GFM Style)](#tasklists--gfm-style-)
+                  * [List syntax](#list-syntax)
+                  * [Nested blocks](#nested-blocks)
+                  * [Nested lists](#nested-lists)
+                  * [Nested code blocks](#nested-code-blocks)
+              - [Links](#links)
+                  * [Simple](#simple)
+                  * [Inline](#inline)
+                  * [Reference Style](#reference-style)
+              - [Images](#images)
+                  * [Inline](#inline-1)
+                  * [Reference Style](#reference-style-1)
+                  * [Image dimensions](#image-dimensions)
+                  * [Base64 encoded images](#base64-encoded-images)
+              - [Tables](#tables)
+              - [Mentions](#mentions)
+              - [Handling HTML in markdown documents](#handling-html-in-markdown-documents)
+              - [Escaping entities](#escaping-entities)
+                  * [Escaping markdown entities](#escaping-markdown-entities)
+                  * [Escaping html tags](#escaping-html-tags)
+              - [Known differences and Gotchas](#known-differences-and-gotchas)
+              
+              ## Introduction
+                        
+                      </markdown> -->
+                      <blockquote class="mb-1 mt-4 pt-3 text-center blockquote"> The Bhalo!Bangla Beta program is online Bengali tutoring. The goal of the program is to help students maintian a connection with their <i>family, nation, religion, and heritage.</i> <br><br></blockquote>
+                      <div class="row justify-content-center">
+                        <button type="button" class="tellmemore btn col-3 text-white show" style="background-color: #ab7200; transition: none !important;  border-radius: 100px" data-bs-toggle="collapse" data-bs-target=".tellmemore" aria-expanded="true"><b>Explain</b></button>
+                        <div class="row justify-content-center"></div>
+                      <div style="background: #ab7200; width: 400px; " aria-expanded="false" class="tellmemore collapse p-4 pb-1 border rounded text-white">
+                                                <!-- linear-gradient(160deg,#e09603,#32ba00) -->
+                        <h2 class="h2 text-center"><b>so there's 3 parts:</b></h2>
+                          <ol>
+                            <li>
+                                <b>Tutoring</b><br> One to three hours of live-online Bengali tutoring at $10/hour
+                            </li><li>
+                               <b>Resources</b><br> Online resources (think vocab lists, activities, games) based on lesson plans
+                            </li><li>
+                                <b>Regular Feedback</b><br> One paragraph of feedback after each lesson and oppotunities to provide feedback after each unit
+                                </li></ol>
+                      </div>
+                      
+<!-- all the deets for transparecy -->
+<div class="row" style="margin-top: 100px;"><div class="col-12 d-flex flex-column align-items-center">
+  <h3 class="h3">I want more info on:</h4>
+    
+
+        <style>.nav-link{--bs-nav-link-color:white}.nav-pills .nav-link.active, .nav-pills .show>.nav-link{--bs-nav-pills-link-active-bg:rgb(202, 109, 2);}.nav-link{background-color:black;} .nav-pills .nav-link{background: black;} .nav-link:focus, .nav-link:hover{color:white; background-color: green;}</style>
+                  <!-- Tabs -->
+                  <ul class="nav nav-pills mb-0 justify-content-center" id="pills-tab" role="tablist">
+                    <!-- Tab 1 Button -->
+                    <li class="nav-item mb-2 me-2" role="presentation">
+                      <button class="nav-link" data-bs-toggle="pill" data-bs-target="#Unit1" type="button" role="tab" aria-controls="pills-home" aria-selected="false">Curriculum</button>
+                    </li>
+                    <!-- Tab 2 Button -->
+                    <li class="nav-item mb-2 me-2" role="presentation">
+                      <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#PricingBilling" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Billing</button>
+                    </li>
+                    <!-- Tab 3 Button -->
+                    <li class="nav-item mb-2 me-2" role="presentation">
+                      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#Scheduling" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Scheduling</button>
+                    </li>
+                    <!-- Tab 4 Button -->
+                    <li class="nav-item mb-2 me-2" role="presentation">
+                      <button class="nav-link" data-bs-toggle="pill" data-bs-target="#ResearchTimeline" type="button" role="tab" aria-controls="pills-home" aria-selected="false">Market Research</button>
+                    </li>
+                    
+                  </ul>
+                  <!-- Tab Contents -->
+                  <div class="tab-content" id="pills-tabContent">
+                     <!-- Content for tab 1 -->
+                  <div class="tab-pane fade" id="Unit1" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0"><div class="card">
+                    <div class="card-body">
+                      <b>Goals</b> <br>
+                      The goals of the program are <b><mark>functional.</mark></b> Thus, lessons will focus almost exclusively on developing practical skills, like conversations and comprehension. <br><br>
+
+                      <b>The Unit Method</b> <br>
+                      Units help make a vast language more manageable. Each unit spans ~6 weeks and focuses on particular themes and skills. See Unit 1 below
+                      <br><br>
+                      
+                      <b>Measuring Growth</b> <br>
+                      The growth of a student will be measured through auto-graded online activities. At the end of a unit, the teacher will report more comprehensively on student progress toward unit objectives. 
+
+                                                            
+
+                    </div>
+                  </div></div>
+                      <!-- Content for tab 2 -->
+                    <div class="tab-pane fade" id="PricingBilling" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                      <div class="card">
+                        <div class="card-body">
+                          You'll see a link to setup billing in your account after you register for the Beta Program. 
+                          You can always change your billing method or the number of hours of tutoring afterward.
+                          
+                        </div>
+                      </div>
+                      
+                      </div>
+                      <!-- Content for tab 3 -->
+                    <div class="tab-pane fade" id="Scheduling" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0"><div class="card">
+                      <div class="card-body">
+                        During onboarding, you'll be matched with a tutor based on preferred class times. You can always change your avaliability online.
+                      </div>
+                    </div></div>
+                     <!-- Content for tab 4 -->
+                     <div class="tab-pane fade show" id="ResearchTimeline" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                      <div class="card mb-3">
+                        <div class="card-body">
+                          <p>We will constantly ask you for feedback to find answers to the questions that drive us:
+                             How can the Bengali community be served best? What are the issues facing Bengalis and how can they be fixed? <br>   
+                             <br><mark class="fst-italic">Both your participation and feedback are incredibly valuable.</mark> They will determine the direction of the program and locate the areas that need improvement. <br>
+                        
+                           </p>
+                          All the channels of feedback we have avaliable to us will be utilized to direct how the program will develop this year. Here is the plan to gain and use your feedback:
+                          
+                        </div>
+                      </div>
+                      <ul class="list-group" >
+                        <!-- <li class="list-group-item list-group-item-success">
+                          <h6 class="h6 mt-2 mb-1">January 2023: Start Bhalo!Bangla</h6>
+                          <p class="mb-1"></p>
+                            <ul class="mb-1"><li>
+                              Setup Infastructure in Bangladesh 
+                            </li><li>
+                              Create a minimum viable portal
+                            </li><li>
+                              Hire first teacher
+                            </li></ul>
+                          </li> -->
+                          <li href="#" class="list-group-item">
+                          <h6 class="h6 mt-2 mb-1">February 2023: Begin Beta Program</h6>
+                          <p class="mb-1"></p>
+                            <ul class="mb-1"><li>
+                              Begin <u>market research interviews</u> (~10 interviews)
+                            </li><li>
+                              Onboard first 5 interested students
+                            </li><li>
+                              Ask teachers about student engagement
+                            </li></ul>
+                          </li><li href="#" class="list-group-item">
+                          <h6 class="h6 mt-2 mb-1">March 2023</h6>
+                          <p class="mb-1"></p>
+                            <ul class="mb-1"><li>
+                              Continue market research interviews (~20 more)
+                            </li><li>
+                              Onboard next 10 interested students
+                            </li><li>
+                              Develop second unit curriculum
+                            </li></ul>
+                          </li><li href="#" class="list-group-item">
+                          <h6 class="h6 mt-2 mb-1">April 2023: Final Onboarding</h6>
+                          <p class="mb-1"></p>
+                            <ul class="mb-1"><li>
+                              Final market research interviews (~20 more)
+                            </li><li>
+                              Onboard last 10 beta students
+                            </li><li>
+                              Survey students (and parents if applicable)
+                            </li></ul>
+                          </li><li href="#" class="list-group-item">
+                          <h6 class="h6 mt-2 mb-1">May 2023: Launch Product and New Website</h6>
+                          <p class="mb-1"></p>
+                            <ul class="mb-1"><li>
+                              Measure platform engagement
+                            </li><li>
+                              Analyze recorded feedback
+                            </li><li>
+                              reevaluate: How much longer in Beta?
+                            </li></ul>
+                          </li>
+                      </ul>
+                  
+                  </div>
+                  
+                  </div>
+                
+  </div>
+</div>
+                    </div>
+                    <div class="col-12 d-flex flex-column align-items-center">
+                      <!-- <h3 class="h3" style="margin-top:150px">Ready for the Beta?</h3> -->
+                      <button id='rainbow' class='btn btn-primary' style="transition: transform .2s ease-in-out; margin-top:150px;font-size: 40px; border-radius: 70px; padding: 10px 30px; border: none; background: linear-gradient(-45deg, #f0231f, #ee7752, #008545, #6a0174);
+                      background-size: 400% 400%;
+                      animation: gradient 5s ease infinite;" onclick="yay()"><b>Register</b></button>
+                      <style>
+                      
+                      #rainbow:hover{
+                        transform: scale(1.2); 
+
+                        }
+                      @keyframes gradient {
+                        0% {
+                            background-position: 0% 50%;
+                        }
+                        50% {
+                            background-position: 100% 50%;
+                        }
+                        100% {
+                            background-position: 0% 50%;
+                        }}
+
+                        @keyframes test {
+                        0% {                          
+                            opacity: 0;
+                        }
+                        100% {
+                            opacity: 1;
+                        }
+                        
+                    }</style>
+                      <script>
+                        function yay(){
+                        var duration = 5 * 1000;
+                        var animationEnd = Date.now() + duration;
+                        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+                        function randomInRange(min, max) {
+                          return Math.random() * (max - min) + min;
+                        }
+
+                        var interval = setInterval(function() {
+                          var timeLeft = animationEnd - Date.now();
+
+                          if (timeLeft <= 0) {
+                            return clearInterval(interval);
+                          }
+
+                          var particleCount = 50 * (timeLeft / duration);
+                          // since particles fall down, start a bit higher than random
+                          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+                        }, 250);
+                        setTimeout(() => { 
+                          document.getElementById('cover').classList.add('d-flex');
+                        document.getElementById('cover').classList.add('open');
+                      }, 2000);
+
+                        
+
+
+                        // document.getElementById('cover').setAttribute("style","opacity:1;")
+                        setTimeout(() => { window.location.href = '/onboard'; }, 5000);
+                        
+
+                        
+
+                      
+                      }
+                      </script>
+
+                    </div>
+                    <div id="cover" class="flex-column align-items-center justify-content-center" 
+                    style="background-color: #e4feff;"> 
+                      <p class="display-4">Let's get started . . .</p>
+                    <style>
+                      #cover{
+                       z-index: 2; position: fixed; top: 0; bottom: 0; left: 0; right: 0; transform:scaleY(0); transition: opacity 2s ease; opacity: 0;
+
+                      }
+
+                      #cover.open{
+                        transform: scaleY(1);
+                        opacity: 1;
+                      }
+                    </style>
+                    </div>
+                    </div>
+                    
+                    
+
+        
+        <!-- ONBOARDNG FORM -->
+        <!-- <div>
+            <form>
+              This is the code that adds the student to the database
+              <script>
+                function makeStudent(name,birth,phone,s_email,p_email,link2dash,hours){
+
+
+
+
+
+
+                  console.log('Form submitted! Making student named ' + name);
+                var Airtable = require('airtable');
+                          var base = new Airtable({apiKey: 'pataVafxqtBa32IY1.4d77daf8255f22dcb88dcbde0c14d73bab2654fa0ac7cd7fb42cf92c42a0ae0d'}).base('appDYx7jO383yZXyc');
+
+                          base('Students').create([
+                            {
+                              "fields": {
+                                "Student_Name": name,
+                                "Birthday_Pass": birth,
+                                "Phone": phone,
+                                "Primary_Email": s_email,
+                                "Secondary_Email": p_email,
+                                "Link2dash": link2dash,
+                                "Schedule": hours
+                              }
+                            }                                                  
+                          ], function(err, records) {
+                            if (err) {
+                              console.error(err);
+                              return;
+                            }
+                            records.forEach(function (record) {
+                              console.log(record.getId());
+                            });
+                          });}
+              </script>
+              <div class="form-group mt-3">
+                <label for="usr">Name:</label>
+                <input type="text" class="form-control" id="usr">
+              </div>
+              <div class="form-group mt-3">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              </div>
+              <div class="form-group mt-3">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div id="calendar"></div>
+                                                      <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+
+
+
+        </div> -->
+        <div class="d-flex align-items-center justify-content-center">                         <p class="mt-5 opacity-50 text-center" style="position: absolute; bottom: 0;">Created by Ibrahim Islam, a student at the University of Houston.</p>
+        </div>
+                       
+         </div>
+      <div class="col-md-2 col-lg-3 d-print-none"></div>
+
+    </div>
+    
+
+<script src="onboard.js"></script>
+        
+
+
+    </div>
+  </div>
+  <script>document.addEventListener('DOMContentLoaded', () => {
+    const calendar = new VanillaCalendar('#calendar');
+    calendar.init();
+  });</script>
+  <!-- <script>
+    var converter = new showdown.Converter();
+    elements      = document.getElementsByTagName('markdown')
+    elements.forEach((hi)=>{
+      console.log(value)
+      console.log(index)
+      console.log(array)
+    }
+  
+    // for (ele in elements){
+    //   text = ele.innerhtml
+    //   html      = converter.makeHtml(text);
+    //   ele.innerHTML = html;
+    // }
+    
+</script> -->
+<!-- <div class="container p-4 pb-1 mt-4 bg-dark text-white rounded" style="--bs-dark-rgb: 206, 111, 4;">
+                                          
+                                          <h3>The Unit 1&nbsp; <span class="badge text-bg-warning">Beta</span></h3>
+                                          <p>The very first unit in about <b>conversational foundations.</b>  </p>
+                                        </div> -->
+</body>
+
+</html>
+
+
