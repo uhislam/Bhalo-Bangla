@@ -209,19 +209,54 @@
                             base('Students').find(urlParams.get('ID').split(" ")[0], function(err, record) {
                                 if (err) { console.error(err); return; }
                                 console.log(record);
-                                console.log('Retrieved', record.fields.Student_Name);
-                                document.getElementById('setname').innerHTML = record.fields.Student_Name;
-                                document.getElementById('setname').innerHTML = record.fields.Student_Name;
-                                document.getElementById('setname').innerHTML = record.fields.Student_Name;
+                                console.log('Retrieved', record.fields.Name);
+
+                                document.getElementById('setname').innerHTML = record.fields.Name;
+                                document.getElementById('setpayment').innerHTML = record.fields.Payment;
+                                if( document.getElementById('setpayment').innerHTML == "Delinquent"){
+                                              document.getElementById('additionalMessage').innerHTML = "Please pay your bill immediately!";
+                                            };
+                                document.getElementById('setrecordID').innerHTML = record.fields.ID;
+
+                                record.fields.IDs.forEach(item => {
+                                  console.log(item);
+                                  base('Bhalo Bangla Sessions').find(item, function(err, record) {
+                                    
+                                      if (err) { console.error(err); return; }
+                                      const isoString = "2024-05-24T12:00:00.000Z";
+                                                const date = new Date(record.fields.Start);
+                                                // Options for formatting the date in a more readable way
+                                                const options = {
+                                                  year: 'numeric',
+                                                  month: 'long',
+                                                  day: 'numeric',
+                                                  hour: '2-digit',
+                                                  minute: '2-digit',
+                                                  // timeZoneName: 'short',
+                                                  timeZone: 'America/Chicago'
+                                                };
+
+                                                // Convert to a human-readable format
+                                                var humanReadableDate = date.toLocaleString('en-US', options);
+
+                                                console.log(humanReadableDate);
+                                      let hee = '<tr> <td>'+ record.fields.Title +'<br>'+ humanReadableDate+'</td> <td> <a href="'+ record.fields.HangoutsLink + '"><button type="button" class="btn btn-info p-0 px-2" style="border-radius: 50px;">Click to Join</button></a> </td> </tr>';
+                                      console.log(hee);
+                                      document.getElementById('table').insertAdjacentHTML("beforeend",hee);
+                                      console.log('Retrieved', record);
+                                  });
+
+                                });
+
                             });
                           }
                         };
                       </script>
-                                            <blockquote class="mb-2 text-left blockquote"> Good morning! You account is <span class="fw-bold" style="color:green">healthy</span>. </i> </blockquote>
+                                            <blockquote  class="mb-2 text-left blockquote"> Good morning! You account is financially <span class="fw-bold" style="color:rgb(0, 0, 0)" id="setpayment">healthy</span>. <span id="additionalMessage" class="fw-bold" style="color:rgb(150, 84, 3)"></span> </i> </blockquote>
                                             <!-- <button type="button" class="btn btn-success mt-0">Payment portal</button> -->
+                                            <script></script>
                       
                       <div style="background-color: #ffffff66;" class="p-4 pb-1 mb-4 mt-4 border rounded text-black">
-                        <!-- linear-gradient(160deg,#e09603,#32ba00) -->
                       
                     <h2 style="color: #8f8a01;" class="h2 text-left mb-2 fst-italic"><b>Sessions:</b></h2>
                     
@@ -234,18 +269,16 @@
                             <th scope="col">Meeting Link</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
+                        <tbody id="table">
+                          <!-- <tr>
                             <td>Past Tense Conjugation</td>
-                            <!-- <td><span class="badge rounded-pill text-bg-warning">In progress</span>
-                            </td> -->
-                            <td><button type="button" class="btn btn-info p-0 px-2" style="border-radius: 50px;">Click to Join</button>
+                            <td> <a href="https://www.uh.edu"><button type="button" class="btn btn-info p-0 px-2" style="border-radius: 50px;">Click to Join</button></a>
                             </td>
                           </tr>
                           <tr>
                             <td>Greetings</td>
-                            <!-- <td><span class="badge rounded-pill text-bg-danger">Not started</span>
-                            </td> -->
+                            <td><span class="badge rounded-pill text-bg-danger">Not started</span>
+                            </td>
                             <td><button type="button" class="btn btn-info p-0 px-2" style="border-radius: 50px;">Click to Join</button>
                             </td>
                           </tr>
@@ -255,7 +288,7 @@
                             </td>
                             <td>
                             </td>
-                          </tr>
+                          </tr> -->
                         </tbody>
                       </table>
                     </div>
@@ -301,9 +334,10 @@
 <div style="background: #ebebeb;"  class="p-4 my-4 border rounded text-black">
   <!-- linear-gradient(160deg,#e09603,#32ba00) -->
 <h2 class=" fst-italic h2 text-left"><b>Support:</b></h2>
-<p class="mb-0">ANY feedback, support, rescheduling: <b>2817558831</b>   </p><p>
-or <b>hi@bhalobangla.net</b>
+<p class="mb-0">ANY feedback, support, rescheduling: <b>2817558831</b>   or hi@bhalobangla.net
 </p>
+<p>Your Student ID is: <b id="setrecordID"></b></p>
+
 <!-- <button href="https://meet.google.com/qra-yiap-ofu" type="button" class="btn btn-dark">Go to class</button> -->
 
 </div>
