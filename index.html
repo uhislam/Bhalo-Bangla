@@ -217,6 +217,7 @@
                                               document.getElementById('additionalMessage').innerHTML = "Please pay your bill immediately!";
                                             };
                                 document.getElementById('setrecordID').innerHTML = record.fields.ID;
+                                var admin = record.fields.teacher;
 
                                 record.fields.IDs.forEach(item => {
                                   console.log(item);
@@ -225,7 +226,7 @@
                                       if (err) { console.error(err); return; }
                                       const isoString = "2024-05-24T12:00:00.000Z";
                                                 const date = new Date(record.fields.Start);
-                                                // Options for formatting the date in a more readable way
+                                                // Options for formatting the date in a more readable way\
                                                 const options = {
                                                   year: 'numeric',
                                                   month: 'long',
@@ -233,14 +234,18 @@
                                                   hour: '2-digit',
                                                   minute: '2-digit',
                                                   // timeZoneName: 'short',
-                                                  timeZone: 'America/Chicago'
+                                                  timeZone: 'Asia/Dhaka'
+                                                
+                                                }
+                                                if (admin){
+                                                  options.timeZone='America/Chicago';
                                                 };
 
                                                 // Convert to a human-readable format
                                                 var humanReadableDate = date.toLocaleString('en-US', options);
 
                                                 console.log(humanReadableDate);
-                                      let hee = '<tr> <td>'+ record.fields.Title +'<br>'+ humanReadableDate+'</td> <td> <a href="'+ record.fields.HangoutsLink + '"><button type="button" class="btn btn-info p-0 px-2" style="border-radius: 50px;">Click to Join</button></a> </td> </tr>';
+                                      let hee = '<tr> <td>'+ record.fields.Title +'<br>'+ humanReadableDate+'</td> <td> <a href="'+ record.fields.HangoutsLink + '"><button type="button" class="btn btn-info p-0 px-2" style="border-radius: 50px;">Join</button></a> </td> </tr>';
                                       console.log(hee);
                                       document.getElementById('table').insertAdjacentHTML("beforeend",hee);
                                       console.log('Retrieved', record);
@@ -252,7 +257,7 @@
                           }
                         };
                       </script>
-                                            <blockquote  class="mb-2 text-left blockquote"> Good morning! You account is financially <span class="fw-bold" style="color:rgb(0, 0, 0)" id="setpayment">healthy</span>. <span id="additionalMessage" class="fw-bold" style="color:rgb(150, 84, 3)"></span> </i> </blockquote>
+                                            <blockquote  class="mb-2 text-left blockquote"> You account is financially <span class="fw-bold" style="color:rgb(0, 0, 0)" id="setpayment">healthy</span>. <span id="additionalMessage" class="fw-bold" style="color:rgb(150, 84, 3)"></span> </i> </blockquote>
                                             <!-- <button type="button" class="btn btn-success mt-0">Payment portal</button> -->
                                             <script></script>
                       
@@ -264,7 +269,7 @@
                     <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">Time CST</th>
+                            <th scope="col">Time CST/BST</th>
                             <!-- <th scope="col">%%</th> -->
                             <th scope="col">Meeting Link</th>
                           </tr>
