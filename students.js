@@ -63,7 +63,24 @@ function login(){
 
 }
 
+function login2(){
+    nameLogin = document.getElementById('nameLogin').value.toString().toLowerCase().split(" ")[0]
+    year = document.getElementById('yearLogin').value
+    console.log(nameLogin,year)
 
+    for (x in studentArray){
+        try{
+        if(
+        studentArray[x].fields.Student_Name.toLowerCase().split(" ")[0] == nameLogin && studentArray[x].fields.Birthday_Pass.substring(0,4) == year
+        ){
+            sessionStorage.user=studentArray[x].id
+            window.location.href =  studentArray[x].fields.Link2dash }
+        } catch {
+            console.log('struggled with',studentArray[x].fields.Student_Name)
+        }
+    }
+
+}
 
 // HANDLINE KEYBOARD PRESSES
 document.onkeyup = function(e) {
@@ -99,7 +116,6 @@ document.onkeydown = (keyDownEvent) => {
     if (isKeyPressed["Enter"]) {
         login()
         }}
-
 
 
 function check(event){
