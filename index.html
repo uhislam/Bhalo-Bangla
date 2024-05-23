@@ -193,7 +193,7 @@
                         
                       </markdown> -->
                       <p class="mb-0 mt-5">welcome,</p>
-                      <h1 class="h1" id="setname">Student</h1>
+                      <b> <h1 class="h1" id="setname">Student</h1></b>
                       <script>
                         const queryString = window.location.search;
                         console.log(queryString);
@@ -208,16 +208,28 @@
 
                             base('Students').find(urlParams.get('ID').split(" ")[0], function(err, record) {
                                 if (err) { console.error(err); return; }
+                                document.getElementById('billing').href= "https://billing.stripe.com/p/login/5kA4gU3xKdhq8Ok3cc?prefilled_email="+record.fields.Primary_Email;
+                                document.getElementById('setupbilling').href= "https://buy.stripe.com/4gw288cgw95XbxmeUU?prefilled_email="+record.fields.Primary_Email;
+
                                 console.log(record);
                                 console.log('Retrieved', record.fields.Name);
 
                                 document.getElementById('setname').innerHTML = record.fields.Name;
-                                document.getElementById('setpayment').innerHTML = record.fields.Payment;
-                                if( document.getElementById('setpayment').innerHTML == "Delinquent"){
-                                              document.getElementById('additionalMessage').innerHTML = "Please pay your bill immediately!";
-                                            };
+                                // document.getElementById('setpayment').innerHTML = record.fields.Payment;
+                                // if( document.getElementById('setpayment').innerHTML == "Delinquent"){
+                                //               document.getElementById('additionalMessage').innerHTML = "Please pay your bill immediately!";
+                                //             };
                                 document.getElementById('setrecordID').innerHTML = record.fields.ID;
                                 var admin = record.fields.teacher;
+                                if (admin){
+                                  Array.from(document.getElementsByClassName("studentonly")).forEach((element) => {
+                                      element.style.display = 'none';
+                                  });
+                                }else{
+                                  Array.from(document.getElementsByClassName("teacheronly")).forEach((element) => {
+                                      element.style.display = 'none';
+                                  });
+                                };
 
                                 record.fields.IDs.forEach(item => {
                                   console.log(item);
@@ -257,7 +269,7 @@
                           }
                         };
                       </script>
-                                            <blockquote  class="mb-2 text-left blockquote"> You account is financially <span class="fw-bold" style="color:rgb(0, 0, 0)" id="setpayment">healthy</span>. <span id="additionalMessage" class="fw-bold" style="color:rgb(150, 84, 3)"></span> </i> </blockquote>
+                                            <!-- <blockquote  class="mb-2 text-left blockquote"> Welcome aboard, let's go!</blockquote> -->
                                             <!-- <button type="button" class="btn btn-success mt-0">Payment portal</button> -->
                                             <script></script>
                       
@@ -335,13 +347,22 @@
   </table>
 </div> -->
 
+<div style="background: #d6ffe7;"  class="p-4 my-4 border rounded text-black studentonly">
+  <!-- linear-gradient(160deg,#e09603,#32ba00) -->
+<h2 style="color: rgb(0, 57, 0);" class=" fst-italic h2 text-left"><b>Billing:</b></h2>
+<p>https://meet.google.com/qra-yiap-ofu</p>
+  <a id="setupbilling" href=""><button type="button" class="btn btn-dark">Setup Billing</button></a>
+  <a id="billing" href="" ><button type="button" class="btn btn-success">Manage Billing</button></a>
+<!-- <button href="https://meet.google.com/qra-yiap-ofu" type="button" class="btn btn-dark">Go to class</button> -->
 
-<div style="background: #ebebeb;"  class="p-4 my-4 border rounded text-black">
+</div>
+
+<div style="background: #ebebeb;"  class="p-4 my-4 border rounded text-black studentonly">
   <!-- linear-gradient(160deg,#e09603,#32ba00) -->
 <h2 class=" fst-italic h2 text-left"><b>Support:</b></h2>
 <p class="mb-0">ANY feedback, support, rescheduling: <b>2817558831</b>   or hi@bhalobangla.net
 </p>
-<p>Your Student ID is: <b id="setrecordID"></b></p>
+<p class="mb-0">Your Student ID is: <b id="setrecordID"></b></p>
 
 <!-- <button href="https://meet.google.com/qra-yiap-ofu" type="button" class="btn btn-dark">Go to class</button> -->
 
