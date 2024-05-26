@@ -209,7 +209,7 @@
                             base('Students').find(urlParams.get('ID').split(" ")[0], function(err, record) {
                                 if (err) { console.error(err); return; }
                                 document.getElementById('billing').href= "https://billing.stripe.com/p/login/5kA4gU3xKdhq8Ok3cc?prefilled_email="+record.fields.Primary_Email;
-                                document.getElementById('setupbilling').href= "https://buy.stripe.com/4gw288cgw95XbxmeUU?prefilled_email="+record.fields.Primary_Email;
+                                document.getElementById('setupbilling').href= "https://buy.stripe.com/bIY1445S86XPeJycMP?prefilled_email="+record.fields.Primary_Email;
 
                                 console.log(record);
                                 console.log('Retrieved', record.fields.Name);
