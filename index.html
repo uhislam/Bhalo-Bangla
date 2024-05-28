@@ -288,6 +288,10 @@ function processAndRenderRecords(records) {
       timeZone: 'Asia/Dhaka'
     };
 
+    if (!admin) {
+      labelOptions.timeZone = 'America/Chicago';
+      }
+
     const dayLabel = dateObj.toLocaleString('en-US', labelOptions);
     const dateLabelHTML = `<tr><td colspan="2" style="font-weight: bold; background-color: #f2f2f2;">${dayLabel}</td></tr>`;
     document.getElementById('table').insertAdjacentHTML("beforeend", dateLabelHTML);
