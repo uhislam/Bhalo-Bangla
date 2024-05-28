@@ -234,40 +234,152 @@
                                       element.style.display = 'none';
                                   });
                                 };
+                                console.log(record);
 
-                                record.fields.IDs.forEach(item => {
-                                  console.log(item);
-                                  base('Bhalo Bangla Sessions').find(item, function(err, record) {
+                                // Step 1: Fetch all records first
+const recordIDs = record.fields.IDs;  // Assuming this is where you get the list of IDs
+
+let records = [];  // Array to store fetched records
+
+recordIDs.forEach(item => {
+  base('Bhalo Bangla Sessions').find(item, function(err, record) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+
+    records.push(record);
+
+    // Once all records are fetched, process them
+    if (records.length === recordIDs.length) {
+      processAndRenderRecords(records);
+    }
+  });
+});
+
+function processAndRenderRecords(records) {
+  // Step 2: Organize records by date
+  let recordsByDate = {};
+
+  records.forEach(record => {
+    const date = new Date(record.fields.Start);
+    const isoString = date.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
+    
+    if (!recordsByDate[isoString]) {
+      recordsByDate[isoString] = [];
+    }
+
+    recordsByDate[isoString].push(record);
+  });
+
+  // Step 3: Sort records by date
+  const sortedDates = Object.keys(recordsByDate).sort((a, b) => new Date(a) - new Date(b));
+
+  // Step 4: Render records to the frontend
+  sortedDates.forEach(date => {
+    const dateObj = new Date(date);
+
+    // Options for formatting the date label
+    const labelOptions = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      timeZone: 'Asia/Dhaka'
+    };
+
+    const dayLabel = dateObj.toLocaleString('en-US', labelOptions);
+    const dateLabelHTML = `<tr><td colspan="2" style="font-weight: bold; background-color: #f2f2f2;">${dayLabel}</td></tr>`;
+    document.getElementById('table').insertAdjacentHTML("beforeend", dateLabelHTML);
+
+    recordsByDate[date].forEach(record => {
+      // const recordDateObj = new Date(record.fields.Start);
+      const startDateObj = new Date(record.fields.Start);
+      const endDateObj = new Date(record.fields.End);
+
+
+      // Options for formatting the date in a more readable way
+      const options = {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      //   year: 'numeric',
+      //   month: 'long',
+      //   day: 'numeric',
+      //   hour: '2-digit',
+      //   minute: '2-digit',
+      //   timeZone: 'Asia/Dhaka'
+      };
+
+      if (!admin) {
+        options.timeZone = 'America/Chicago';
+        document.getElementById('timeZone').innerHTML='(Central)'
+      }
+
+      // Convert to a human-readable format
+      // const humanReadableDate = recordDateObj.toLocaleString('en-US', options);
+      const startTime = startDateObj.toLocaleString('en-US', options);
+      const endTime = endDateObj.toLocaleString('en-US', options);
+      const timeRange = `${startTime} - ${endTime}`;
+
+      let joinButtonHTML = '';
+      if (record.fields.HangoutsLink) {
+        joinButtonHTML = `
+          <a href="${record.fields.HangoutsLink}">
+            <button type="button" class="btn btn-info p-0 px-2" style="border-radius: 50px;">Join</button>
+          </a>
+        `;
+      }
+
+      const rowHTML = `
+        <tr>
+          <td>${timeRange} ${record.fields.Title}</td>
+          <td>${joinButtonHTML}</td>
+        </tr>
+      `;
+
+      document.getElementById('table').insertAdjacentHTML("beforeend", rowHTML);
+    });
+  });
+}
+
+
+
+
+
+                                // record.fields.IDs.forEach(item => {
+                                  
+                                //   base('Bhalo Bangla Sessions').find(item, function(err, record) {
                                     
-                                      if (err) { console.error(err); return; }
-                                      const isoString = "2024-05-24T12:00:00.000Z";
-                                                const date = new Date(record.fields.Start);
-                                                // Options for formatting the date in a more readable way\
-                                                const options = {
-                                                  year: 'numeric',
-                                                  month: 'long',
-                                                  day: 'numeric',
-                                                  hour: '2-digit',
-                                                  minute: '2-digit',
-                                                  // timeZoneName: 'short',
-                                                  timeZone: 'Asia/Dhaka'
+                                //       if (err) { console.error(err); return; }
+                                //       const isoString = "2024-05-24T12:00:00.000Z";
+                                //                 const date = new Date(record.fields.Start);
+                                //                 // Options for formatting the date in a more readable way\
+                                //                 const options = {
+                                //                   year: 'numeric',
+                                //                   month: 'long',
+                                //                   day: 'numeric',
+                                //                   hour: '2-digit',
+                                //                   minute: '2-digit',
+                                //                   // timeZoneName: 'short',
+                                //                   timeZone: 'Asia/Dhaka'
                                                 
-                                                }
-                                                if (!admin){
-                                                  options.timeZone='America/Chicago';
-                                                };
+                                //                 }
+                                //                 if (!admin){
+                                //                   options.timeZone='America/Chicago';
+                                //                 };
 
-                                                // Convert to a human-readable format
-                                                var humanReadableDate = date.toLocaleString('en-US', options);
+                                //                 // Convert to a human-readable format
+                                //                 var humanReadableDate = date.toLocaleString('en-US', options);
 
-                                                console.log(humanReadableDate);
-                                      let hee = '<tr> <td>'+ record.fields.Title +'<br>'+ humanReadableDate+'</td> <td> <a href="'+ record.fields.HangoutsLink + '"><button type="button" class="btn btn-info p-0 px-2" style="border-radius: 50px;">Join</button></a> </td> </tr>';
-                                      console.log(hee);
-                                      document.getElementById('table').insertAdjacentHTML("beforeend",hee);
-                                      console.log('Retrieved', record);
-                                  });
+                                //                 console.log(humanReadableDate);
+                                //       let hee = '<tr> <td>'+ record.fields.Title +'<br>'+ humanReadableDate+'</td> <td> <a href="'+ record.fields.HangoutsLink + '"><button type="button" class="btn btn-info p-0 px-2" style="border-radius: 50px;">Join</button></a> </td> </tr>';
+                                //       console.log(hee);
+                                //       document.getElementById('table').insertAdjacentHTML("beforeend",hee);
+                                //       console.log('Retrieved', record);
+                                //   });
 
-                                });
+                                // });
 
                             });
                           }
@@ -281,13 +393,13 @@
                       
                       <div style="background-color: #ffffff66;" class="p-4 pb-1 mb-4 mt-4 border rounded text-black">
                       
-                    <h2 style="color: #8f8a01;" class="h2 text-left mb-2 fst-italic"><b>Sessions:</b></h2>
+                    <h2 style="color: #8f8a01;" class="h2 text-left mb-2 fst-italic"><b>This week's sessions:</b></h2>
                     
                     <!-- <span class="badge rounded-pill mt-1" style="background-color: #F0C433; color: black;">Reading and Writin</span> -->
                     <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">Time CST/BST</th>
+                            <th scope="col">Time <span id="timeZone">(All Bengali)</span></th>
                             <!-- <th scope="col">%%</th> -->
                             <th scope="col">Meeting Link</th>
                           </tr>
