@@ -220,13 +220,17 @@
                                 //               document.getElementById('additionalMessage').innerHTML = "Please pay your bill immediately!";
                                 //             };
                                 document.getElementById('setrecordID').innerHTML = record.fields.ID;
+                                if(record.fields.numHours){
+                                  document.getElementById('numHours').innerHTML = '(to '+record.fields.numHours+' Hours)';
+                                }
+                                
                                 var admin = record.fields.teacher;
                                 if (admin){
                                   Array.from(document.getElementsByClassName("studentonly")).forEach((element) => {
                                       element.style.display = 'none';
                                   });
                                 }else{
-                                  Array.from(document.getElementsByClassName("teacheronly")).forEach((element) => {
+                                  Array.from(document.getElementsByClassName("adjust")).forEach((element) => {
                                       element.style.display = 'none';
                                   });
                                 };
@@ -268,6 +272,8 @@
                             });
                           }
                         };
+
+                        
                       </script>
                                             <!-- <blockquote  class="mb-2 text-left blockquote"> Welcome aboard, let's go!</blockquote> -->
                                             <!-- <button type="button" class="btn btn-success mt-0">Payment portal</button> -->
@@ -351,7 +357,34 @@
   <!-- linear-gradient(160deg,#e09603,#32ba00) -->
 <h2 style="color: rgb(0, 57, 0);" class=" fst-italic h2 text-left"><b>Billing:</b></h2>
 <p>Setup payment, view invoices, and payment methods below</p>
-  <a id="setupbilling" href=""><button type="button" class="btn btn-dark">Setup Billing</button></a>
+<!-- <button type="button" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-dark"></button> -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Setup Billing
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body text-danger">
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        <p>Please adjust the quantity of hours in checkout <span id="numHours"></span> </p>
+        <a id="setupbilling" href=""><button type="button" class="btn btn-dark">Go to payment</button></a>
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
   <a id="billing" href="" ><button type="button" class="btn btn-success">Manage Billing</button></a>
 <!-- <button href="https://meet.google.com/qra-yiap-ofu" type="button" class="btn btn-dark">Go to class</button> -->
 
@@ -448,10 +481,10 @@
 <!-- <script src="dash.js"></script> -->
     </div>
   </div>
-  <script>document.addEventListener('DOMContentLoaded', () => {
+  <!-- <script>document.addEventListener('DOMContentLoaded', () => {
     const calendar = new VanillaCalendar('#calendar');
     calendar.init();
-  });</script>
+  });</script> -->
   <!-- <script>
     var converter = new showdown.Converter();
     elements      = document.getElementsByTagName('markdown')
@@ -474,11 +507,7 @@
                                           <p>The very first unit in about <b>conversational foundations.</b>  </p>
                                         </div> -->
 
-<script>
 
-
-
-</script>
 </body>
 
 </html>
