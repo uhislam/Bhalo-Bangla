@@ -262,16 +262,28 @@ function processAndRenderRecords(records) {
   // Step 2: Organize records by date
   let recordsByDate = {};
 
-  records.forEach(record => {
-    const date = new Date(record.fields.Start);
-    const isoString = new Date(date.toLocaleString('en-US', { timeZone: admin ? 'Asia/Dhaka' : 'America/Chicago' })).toISOString().split('T')[0]; // Format date as YYYY-MM-DD
-    
-    if (!recordsByDate[isoString]) {
-      recordsByDate[isoString] = [];
-    }
 
-    recordsByDate[isoString].push(record);
-  });
+  
+
+  records.forEach(record => {
+  const date = new Date(record.fields.Start);
+  
+  // Determine the time zone based on the admin flag
+  const timeZone = admin ? 'Asia/Dhaka' : 'America/Chicago';
+  
+  // Convert date to ISO string in the appropriate time zone
+  const options = { timeZone: timeZone, year: 'numeric', month: '2-digit', day: '2-digit' };
+  const formattedDateString = date.toLocaleDateString('en-GB', options).split('/').reverse().join('-'); // Format date as YYYY-MM-DD
+  
+  if (!recordsByDate[formattedDateString]) {
+    recordsByDate[formattedDateString] = [];
+  }
+
+  recordsByDate[formattedDateString].push(record);
+});
+
+
+
 
   // Step 3: Sort records by date
   const sortedDates = Object.keys(recordsByDate).sort((a, b) => new Date(a) - new Date(b));
