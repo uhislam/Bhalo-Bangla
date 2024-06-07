@@ -26,6 +26,28 @@
   gtag('js', new Date());
 
   gtag('config', 'G-SHLLXSNFSY');
+
+  function checkUrlForID() {
+            // Get the URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Check if the 'ID' parameter exists
+            if (!urlParams.has('ID')) {
+                // Fetch the content of 'index2.html'
+                fetch('home.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        // Replace the content of the current page with the fetched content
+                        document.documentElement.innerHTML = data;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching home:', error);
+                    });
+            }
+        }
+
+        // Call the function to check URL and possibly load index2.html content
+        checkUrlForID();
 </script>
   <!--<script>"use strict"
     var button = document.querySelectorAll('[data-id="button"]')
@@ -495,16 +517,105 @@ function processAndRenderRecords(records) {
   </table>
 </div> -->
 
-                    <div style="background: #F0C433;position: relative;"  class="p-4 my-4 border rounded text-white adminonly">
+                    <div style="background: #f0c4337d;position: relative;"  class="p-4 my-4 border rounded text-black adminonly">
                       <!-- linear-gradient(160deg,#e09603,#32ba00) -->
                       <div style="z-index: 1;position: relative;">
-                        <h2 class=" fst-italic h2 text-left"><b>L1 Reading Resources:</b></h2>
-                        <button type="button" class="btn btn-light" style="border-radius: 50px;align-content: center;justify-content: center;"> <img width="15px" height="15px" src="/googleDocument.svg" alt="">Reading Syllabus</button>
+                        <h2 class="fst-italic h2 text-left"><b>Language Basics</b></h2>
+                        <!-- <p style="max-width: 60%;"> <b>About:</b> expressions, 90 and 2/100 times 90, while eliminating incorrect options. Master percentage calculations with ease and confidence. Created by Sal Khan.
+                        </p> -->
+                        
+                        <!-- <h3>Resources:</h3> -->
+                        <!-- <a target="_blank" href="https://docs.google.com/document/d/1HB9kyoLzEEG0rcAFeHCp4bWpF5mTgCOTztVhSYpIy8s/preview">
+                          <button type="button" class="btn btn-light" style="border-radius: 50px;align-content: center;justify-content: center;padding: 3px 10px;font-weight: 500;"> <img width="15px" height="20px" style="margin-bottom: 3px;" src="/googleDocument.svg" alt="">
+                            Full Syllabus
+                          </button>
+                        </a> -->
+                        <ul resources>
+                          <li data-bs-toggle="modal" data-bs-target="#content" data-type="video" data-popup-url="resources/vocab1.html" data-popup-height="1000">Full Syllabus</li>
+                          <li data-bs-toggle="modal" data-bs-target="#content" data-type="static" data-popup-url="https://docs.google.com/document/d/e/2PACX-1vRQxcyd9091YqpdFhZS7WDCZCkQ6bv0o3JaJyMbmVw4HnKeHSAghJNMxZntkiUyS0s3egycJqJTPeaC/pub?embedded=true" data-popup-height="2000">Vocabulary List 1</li>
+                          <li data-bs-toggle="modal" data-bs-target="#content" data-type="drill" data-popup-url="https://www.youtube.com/watch?v=szIC5w62x3g" data-popup-height="400px">Homework Day 1</li>
+                        </ul>
+                        <style>
+                          ul[resources]{
+                            margin-bottom: 0;
+                            margin-top: 20px;
+                            margin-left: 10px;
+                            color: black;
+                            font-weight: 700;
+                          }
+
+                         ul[resources]>li{
+                          list-style-type: none;height: 34px; margin: 0;}
+                          ul[resources]>li{position: relative;}
+                          ul[resources] > li:hover {
+    text-decoration: underline;
+    color: red;
+}
+                          ul[resources]>li::marker{
+                            visibility: none;}
+                          ul[resources]>li::before{
+                            visibility: visible;
+                            content: '';
+                            position: absolute;
+                            opacity: 100%;
+                            top: 0;
+                            left: 0px;
+                            width: 24px;
+                            height: 24px;
+                              background: url(doc.svg) no-repeat center;
+                              color: black;
+                              margin-left: -35px;
+                              border: gray solid 1.2px;
+                              border-radius: 3px;
+                          }
+                        </style>
+                        
+                        
                       </div>
                     <img style="opacity: 0.5;max-width: 200px;max-height: 100%;position: absolute;right: 10px;top: 0px;"aria-label="unit icon" loading="lazy" type="badge" src="https://resources.rosettastone.com/rs/zoom/app/static/media/unit_1.34b2ffd5.png">
 
                     </div>
 
+                   
+                  <div class="modal" tabindex="-1" id="content">
+                      <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Vocabulary Lesson 1</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <!-- <p>Modal body text goes here.</p> -->
+                            <iframe id="contentframe" width="100%" src="https://docs.google.com/document/d/e/2PACX-1vRQxcyd9091YqpdFhZS7WDCZCkQ6bv0o3JaJyMbmVw4HnKeHSAghJNMxZntkiUyS0s3egycJqJTPeaC/pub?embedded=true" ></iframe>
+                          </div>
+                          
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <script>
+                      var exampleModal = document.getElementById('content');
+                        exampleModal.addEventListener('show.bs.modal', function (event) {
+                          var button = event.relatedTarget; // Button that triggered the modal
+                          var url = button.getAttribute('data-popup-url'); // Extract info from data-popup-url attribute
+                          var height = button.getAttribute('data-popup-height'); // Extract info from data-popup-height attribute
+                      
+                          var iframe = exampleModal.querySelector('#contentframe');
+                          iframe.src = url;
+                          iframe.style.height = height + 'px';
+                        });
+                      
+                        exampleModal.addEventListener('hidden.bs.modal', function () {
+                          var iframe = exampleModal.querySelector('#contentframe');
+                          iframe.src = ''; // Clear the src of iframe when modal is closed
+                          iframe.style.height = ''; // Clear the height of iframe when modal is closed
+                        });
+                      
+                      
+                                              </script>
                     <!-- UNITS -->
                     <div class="container-fluid m-0 p-0" style="display: none;">
                       <!-- unit 1 dad -->
@@ -608,6 +719,17 @@ function processAndRenderRecords(records) {
 <!-- <p class="mb-0">Your Student ID is: <b id="setrecordID"></b></p> -->
 
 <!-- <button href="https://meet.google.com/qra-yiap-ofu" type="button" class="btn btn-dark">Go to class</button> -->
+
+</div>
+
+<div style="background: #e3b3e2;"  class="p-4 my-4 border rounded text-black adminonly">
+<h2 class=" h2 text-left mb-1">Curriculum Building</h2>
+<p>Below you can add and edit the vocabulary lists, Syllabi, and Drills</p>
+<a target="_blank" href="https://drive.google.com/drive/folders/1kyi4RWYVXVgpYbV-BzyDc--3hPPcu-77?usp=drive_link">
+  <button type="button" class="btn btn-light" style="border-radius: 50px;align-content: center;justify-content: center;padding: 3px 10px;font-weight: 500;"> <img width="20px" height="20px" style="margin-bottom: 3px;" src="/foldericon.png" alt="">
+    Curriculum Folder
+  </button>
+</a>
 
 </div>
 
