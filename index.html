@@ -235,6 +235,8 @@
                                 console.log('Retrieved', record.fields.Name);
 
                                 document.getElementById('setname').innerHTML = record.fields.Name;
+                                document.getElementById("feedbackname").value = record.fields.Name;
+
                                 // document.getElementById('setpayment').innerHTML = record.fields.Payment;
                                 // if( document.getElementById('setpayment').innerHTML == "Delinquent"){
                                 //               document.getElementById('additionalMessage').innerHTML = "Please pay your bill immediately!";
@@ -613,7 +615,7 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
     if (dataType === 'resource') {
         iframe.onload = function () {
             // Set the height based on the iframe's content
-            iframe.style.height = iframe.contentWindow.document.body.scrollHeight+10 + 'px';
+            iframe.style.height = (iframe.contentWindow.document.body.scrollHeight+50) + 'px';
     // Loop through each modal body element
     modalBodies.forEach(function(modalBody) {
         // Set padding to 0
@@ -730,13 +732,56 @@ exampleModal.addEventListener('hidden.bs.modal', function () {
 
 <div style="background: #ebebeb;"  class="p-4 my-4 border rounded text-black studentonly">
   <!-- linear-gradient(160deg,#e09603,#32ba00) -->
-<h2 class=" h2 text-left">                     <b>   What is  <span class="badge rounded-pill text-bg-warning fst-italic" style="opacity: 0.5;">BETA</span></b></h2>
-<ul class="mb-0">
+<h2 class=" h2 text-left">                     <b>   You're in the  <span class="badge rounded-pill text-bg-warning fst-italic" style="opacity: 0.5;">BETA</span></b> program 🥳</h2>
+<!-- <ul class="mb-0">
   <li>This program is entirely new.</li>
   <li>We are actively working out problems</li>
   <li>We'll be avaliable 24 hours to help at 2817558831</li>
   <li>We need feedback from you to improve the service</li>
-</ul>
+</ul> -->
+
+<p>
+  <span class="badge rounded-pill text-bg-warning fst-italic" style="opacity: 0.5;">BETA</span> means you are an early adopter and will recieve product update emails. Please give feedback regularly so we can improve:
+</p>
+
+<input type="text" id="feedbackname" name="fname" style="display: none;">
+
+<div class="form-floating mt-2" id="feedbackareaa">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+  <label for="floatingTextarea2">Feedack (anonymous)</label>
+</div>
+<button id="feedbacksubmit" onclick="feedback()" type="button" class="btn btn-success mt-3">Submit</button>
+
+<script>
+  function feedback(){
+
+base('Beta Feedback').create([
+  {
+    "fields": {
+      "From Who": document.getElementById('feedbackname').value,
+      "Feedback": document.getElementById('floatingTextarea2').value
+    }
+  }
+], function(err, records) {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  records.forEach(function (record) {
+    console.log(record.getId());
+  });
+});
+
+document.getElementById('feedbackname').style.display = 'none';
+  document.getElementById('feedbackareaa').style.display = 'none';
+  document.getElementById('feedbacksubmit').style.display = 'none';
+  }
+  
+  
+
+</script>
+
+
 <!-- <p class="mb-0"> <b>2817558831</b>   or hi@bhalobangla.net
 </p> -->
 <!-- <p class="mb-0">Your Student ID is: <b id="setrecordID"></b></p> -->
