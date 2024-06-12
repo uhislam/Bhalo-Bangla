@@ -6,8 +6,6 @@
 
   <!-- BOOTSTRAP Latest compiled JavaScript -->
   <link rel="stylesheet" href="universal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uvarov.frontend/vanilla-calendar@2.2.5/build/vanilla-calendar.min.css">
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@uvarov.frontend/vanilla-calendar@2.2.5/build/vanilla-calendar.min.js"></script>
 
   <script type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -517,7 +515,7 @@ function processAndRenderRecords(records) {
   </table>
 </div> -->
 
-                    <div style="background: #f0c4337d;position: relative;"  class="p-4 my-4 border rounded text-black adminonly">
+                    <div style="background: #e3ba31;position: relative;"  class="p-4 my-4 border rounded text-white adminonly">
                       <!-- linear-gradient(160deg,#e09603,#32ba00) -->
                       <div style="z-index: 1;position: relative;">
                         <h2 class="fst-italic h2 text-left"><b>Language Basics</b></h2>
@@ -531,17 +529,18 @@ function processAndRenderRecords(records) {
                           </button>
                         </a> -->
                         <ul resources>
-                          <li data-bs-toggle="modal" data-bs-target="#content" data-type="video" data-popup-url="resources/vocab1.html" data-popup-height="1000">Full Syllabus</li>
-                          <li data-bs-toggle="modal" data-bs-target="#content" data-type="static" data-popup-url="https://docs.google.com/document/d/e/2PACX-1vRQxcyd9091YqpdFhZS7WDCZCkQ6bv0o3JaJyMbmVw4HnKeHSAghJNMxZntkiUyS0s3egycJqJTPeaC/pub?embedded=true" data-popup-height="2000">Vocabulary List 1</li>
-                          <li data-bs-toggle="modal" data-bs-target="#content" data-type="drill" data-popup-url="https://www.youtube.com/watch?v=szIC5w62x3g" data-popup-height="400px">Homework Day 1</li>
+                          <li data-bs-toggle="modal" data-bs-target="#content" data-type="static" data-popup-url="https://docs.google.com/document/d/e/2PACX-1vRu_0PNPobgWyP-CrN8NlYS8vfEzIClmsI_Y3Q4M7LRrqo1MX2eEY2YnojOW7b5_DA9hGwfZTaZqVYF/pub?embedded=true" data-popup-height="4000">Level 2 Syllabus</li>
+                          <li data-bs-toggle="modal" data-bs-target="#content" data-type="resource" data-popup-url="resources/convo1.html">Conversation #1</li>
+                          <li data-bs-toggle="modal" data-bs-target="#content" data-type="resource" data-popup-url="resources/drill1.html">Drill #1</li>
+                          <!-- <li data-bs-toggle="modal" data-bs-target="#content" data-type="drill" data-popup-url="https://www.youtube.com/watch?v=szIC5w62x3g" data-popup-height="400px">Vocabulary #1</li> -->
                         </ul>
                         <style>
                           ul[resources]{
                             margin-bottom: 0;
                             margin-top: 20px;
                             margin-left: 10px;
-                            color: black;
-                            font-weight: 700;
+                            color: white;
+                            font-weight: 500;
                           }
 
                          ul[resources]>li{
@@ -549,7 +548,7 @@ function processAndRenderRecords(records) {
                           ul[resources]>li{position: relative;}
                           ul[resources] > li:hover {
     text-decoration: underline;
-    color: red;
+    /* color: red; */
 }
                           ul[resources]>li::marker{
                             visibility: none;}
@@ -563,9 +562,10 @@ function processAndRenderRecords(records) {
                             width: 24px;
                             height: 24px;
                               background: url(doc.svg) no-repeat center;
-                              color: black;
+                              color: white;
                               margin-left: -35px;
-                              border: gray solid 1.2px;
+                              border: black solid 1.2px;
+                              background-color: rgba(255, 255, 255, 0.483);
                               border-radius: 3px;
                           }
                         </style>
@@ -578,43 +578,66 @@ function processAndRenderRecords(records) {
 
                    
                   <div class="modal" tabindex="-1" id="content">
-                      <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                      <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable modal-fullscreen-md-down	">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title">Vocabulary Lesson 1</h5>
+                            <!-- <h5 class="modal-title">Vocabulary Lesson 1</h5> -->
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
+
                             <!-- <p>Modal body text goes here.</p> -->
                             <iframe id="contentframe" width="100%" src="https://docs.google.com/document/d/e/2PACX-1vRQxcyd9091YqpdFhZS7WDCZCkQ6bv0o3JaJyMbmVw4HnKeHSAghJNMxZntkiUyS0s3egycJqJTPeaC/pub?embedded=true" ></iframe>
                           </div>
                           
-                          <div class="modal-footer">
+                          <!-- <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Save changes</button>
-                          </div>
+                          </div> -->
                         </div>
                       </div>
                     </div>
                     <script>
-                      var exampleModal = document.getElementById('content');
-                        exampleModal.addEventListener('show.bs.modal', function (event) {
-                          var button = event.relatedTarget; // Button that triggered the modal
-                          var url = button.getAttribute('data-popup-url'); // Extract info from data-popup-url attribute
-                          var height = button.getAttribute('data-popup-height'); // Extract info from data-popup-height attribute
-                      
-                          var iframe = exampleModal.querySelector('#contentframe');
-                          iframe.src = url;
-                          iframe.style.height = height + 'px';
-                        });
-                      
-                        exampleModal.addEventListener('hidden.bs.modal', function () {
-                          var iframe = exampleModal.querySelector('#contentframe');
-                          iframe.src = ''; // Clear the src of iframe when modal is closed
-                          iframe.style.height = ''; // Clear the height of iframe when modal is closed
-                        });
-                      
-                      
+var exampleModal = document.getElementById('content');
+
+exampleModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget; // Button that triggered the modal
+    var dataType = button.getAttribute('data-type'); // Get the value of data-type attribute
+    var url = button.getAttribute('data-popup-url'); // Extract info from data-popup-url attribute
+    var height = button.getAttribute('data-popup-height'); // Extract info from data-popup-height attribute
+    var iframe = exampleModal.querySelector('#contentframe');
+    var modalBodies = document.querySelectorAll('.modal-body');
+
+    iframe.src = url;
+    
+    if (dataType === 'resource') {
+        iframe.onload = function () {
+            // Set the height based on the iframe's content
+            iframe.style.height = iframe.contentWindow.document.body.scrollHeight+10 + 'px';
+    // Loop through each modal body element
+    modalBodies.forEach(function(modalBody) {
+        // Set padding to 0
+        modalBody.style.padding = '0';
+    });
+
+
+        };
+    } else {
+        iframe.style.height = height + 'px';
+
+        modalBodies.forEach(function(modalBody) {
+        // Set padding to 0
+        modalBody.style.padding = '15px';
+    });
+    }
+});
+
+exampleModal.addEventListener('hidden.bs.modal', function () {
+    var iframe = exampleModal.querySelector('#contentframe');
+    iframe.src = ''; // Clear the src of iframe when modal is closed
+    iframe.style.height = ''; // Clear the height of iframe when modal is closed
+});
+
                                               </script>
                     <!-- UNITS -->
                     <div class="container-fluid m-0 p-0" style="display: none;">
@@ -634,7 +657,7 @@ function processAndRenderRecords(records) {
                       
                       <div class="col">
                       <input disabled type="radio" class="btn-check unit" id="unit2" name="units">
-                      <label style="min-width:240px; max-width:100% height: 112px;text-align: left; background-color: #B0C946; border:none;" class="btn btn-outline-secondary d-flex flex-row m-0 p-0 me-3 mb-3 justify-content-between" for="unit2">
+                      <label style="min-width:240px; max-width:100% height: 112px; text-align: left; background-color: #B0C946; border:none;" class="btn btn-outline-secondary d-flex flex-row m-0 p-0 me-3 mb-3 justify-content-between" for="unit2">
                       <div class="ps-3 pt-2"><p class="fw-bold m-0 p-0 text-white">Unit 2</p><p class="m-0 p-0 text-white" style="font-size: large; line-height: 20px;">Greetings and Introductions</p></div>
                       <div>
                         <img style="height: 112px;"aria-label="unit icon" loading="lazy" type="badge" src="https://resources.rosettastone.com/rs/zoom/app/static/media/unit_2.b965eb83.png" class="css-1ugv3eq">

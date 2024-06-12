@@ -1,0 +1,902 @@
+<body >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<div style="background-color: black; color: white;padding: 30px;">
+
+    <h1 class="me-2" style="font-size: 3rem;font-family: Georgia, 'Times New Roman', Times, serif; ">Patterns Lesson 1</h1>
+    <audio style="display: none;" id="audioPlayer" controls>
+        <source src="https://celt.sitehost.iu.edu/material/bengali/B0105/L01-4.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <script>
+        function playSegment(startTime, endTime) {
+  var audio = document.getElementById('audioPlayer');
+  
+  // Stop the audio if it is already playing
+  if (!audio.paused) {
+    audio.pause();
+    audio.currentTime = 0; // Reset the audio to the beginning
+  }
+
+  // Set start time to the passed parameter
+  audio.currentTime = startTime;
+
+  // Clear any existing interval
+  if (audio.segmentInterval) {
+    clearInterval(audio.segmentInterval);
+  }
+
+  // Set an interval to check every 200ms if the end time is reached
+  audio.segmentInterval = setInterval(function() {
+    if (audio.currentTime >= endTime) {
+      audio.pause();
+      clearInterval(audio.segmentInterval);
+    }
+  }, 200);
+
+  // Play the audio
+  audio.play();
+}
+
+
+      </script>
+
+          <p style="max-width: 60%;">Select all to see everything, or a number to only see that line</p>
+
+      <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <input onclick="showAll()" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+        <label class="btn btn-outline-light" for="btnradio1">Show all</label>
+      
+        <input onclick="hideNthChild(1)" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+        <label class="btn btn-outline-light" for="btnradio2">A</label>
+      
+        <input onclick="hideNthChild(2)" type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+        <label class="btn btn-outline-light" for="btnradio3">B</label>
+
+        <input onclick="hideNthChild(3)" type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+        <label class="btn btn-outline-light" for="btnradio4">C</label>
+
+        <input onclick="hideNthChild(4)" type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
+        <label class="btn btn-outline-light" for="btnradio5">D</label>
+
+        <input onclick="hideNthChild(5)" type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off">
+        <label class="btn btn-outline-light" for="btnradio6">E</label>
+      </div>
+    <!-- <button onclick="playSegment(48,98)" class="btn btn-outline-light">Bengali <svg height="25px" width="25px" style="padding-left: 5px;" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.76 17.75">
+        <defs>
+          <style>
+            .cls-1 {
+              stroke-width: 0px;
+            }
+          </style>
+        </defs>
+        <g id="Layer_1-2" data-name="Layer 1">
+          <g>
+            <path fill="currentColor" class="cls-1" d="M12.63,8.88c0,2.67,0,5.33,0,8,0,.46-.27.79-.71.86-.26.04-.49-.05-.69-.22-.6-.52-1.2-1.04-1.8-1.56-1.19-1.03-2.39-2.07-3.58-3.09-.05-.04-.13-.06-.19-.07-1.58,0-3.16,0-4.75,0-.13,0-.28-.01-.4-.06C.18,12.6,0,12.35,0,12c0-2.1,0-4.21,0-6.31,0-.46.36-.8.83-.8.39,0,.79,0,1.18,0,1.24,0,2.48,0,3.72,0,.07,0,.15-.03.2-.07,1.77-1.52,3.53-3.05,5.3-4.58.48-.42,1.19-.23,1.36.36.03.1.04.21.04.31,0,2.66,0,5.32,0,7.99Z"/>
+            <path fill="currentColor" class="cls-1" d="M22.76,8.8c-.04,3.25-1.02,6.08-2.98,8.56-.24.31-.61.42-.96.29-.34-.13-.55-.45-.53-.82.01-.19.09-.35.21-.5.73-.92,1.31-1.92,1.75-3.01.45-1.13.73-2.31.82-3.53.21-3.11-.65-5.9-2.57-8.36-.22-.28-.28-.59-.11-.91.15-.31.42-.46.76-.45.27,0,.48.14.64.35.75.94,1.36,1.96,1.84,3.07.6,1.4.97,2.85,1.08,4.37.02.34.04.69.05.94Z"/>
+            <path fill="currentColor" class="cls-1" d="M19.72,8.89c-.02,2.33-.7,4.43-2.07,6.32-.19.27-.46.39-.78.35-.31-.04-.54-.22-.66-.52-.11-.29-.06-.56.12-.81.5-.69.92-1.43,1.2-2.24,1.02-2.99.64-5.79-1.16-8.39-.18-.27-.28-.53-.16-.85.11-.3.33-.48.65-.53.32-.05.59.06.79.33.76,1.03,1.31,2.15,1.66,3.38.28.97.42,1.95.42,2.96Z"/>
+            <path fill="currentColor" class="cls-1" d="M16.51,8.89c0,1.43-.4,2.75-1.17,3.95-.26.4-.75.51-1.14.27-.39-.24-.5-.74-.25-1.14.44-.69.73-1.42.85-2.23.2-1.37-.07-2.64-.79-3.82-.13-.21-.23-.42-.18-.68.06-.34.3-.6.64-.67.32-.07.66.06.85.35.51.77.86,1.61,1.04,2.52.1.48.15.97.15,1.46Z"/>
+          </g>
+        </g>
+      </svg></button>
+    <button onclick="playSegment(218,334)" class="btn btn-outline-light">English
+        <svg height="25px" width="25px" style="padding-left: 5px;" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.76 17.75">
+        <defs>
+          <style>
+            .cls-1 {
+              stroke-width: 0px;
+            }
+          </style>
+        </defs>
+        <g id="Layer_1-2" data-name="Layer 1">
+          <g>
+            <path fill="currentColor" class="cls-1" d="M12.63,8.88c0,2.67,0,5.33,0,8,0,.46-.27.79-.71.86-.26.04-.49-.05-.69-.22-.6-.52-1.2-1.04-1.8-1.56-1.19-1.03-2.39-2.07-3.58-3.09-.05-.04-.13-.06-.19-.07-1.58,0-3.16,0-4.75,0-.13,0-.28-.01-.4-.06C.18,12.6,0,12.35,0,12c0-2.1,0-4.21,0-6.31,0-.46.36-.8.83-.8.39,0,.79,0,1.18,0,1.24,0,2.48,0,3.72,0,.07,0,.15-.03.2-.07,1.77-1.52,3.53-3.05,5.3-4.58.48-.42,1.19-.23,1.36.36.03.1.04.21.04.31,0,2.66,0,5.32,0,7.99Z"/>
+            <path fill="currentColor" class="cls-1" d="M22.76,8.8c-.04,3.25-1.02,6.08-2.98,8.56-.24.31-.61.42-.96.29-.34-.13-.55-.45-.53-.82.01-.19.09-.35.21-.5.73-.92,1.31-1.92,1.75-3.01.45-1.13.73-2.31.82-3.53.21-3.11-.65-5.9-2.57-8.36-.22-.28-.28-.59-.11-.91.15-.31.42-.46.76-.45.27,0,.48.14.64.35.75.94,1.36,1.96,1.84,3.07.6,1.4.97,2.85,1.08,4.37.02.34.04.69.05.94Z"/>
+            <path fill="currentColor" class="cls-1" d="M19.72,8.89c-.02,2.33-.7,4.43-2.07,6.32-.19.27-.46.39-.78.35-.31-.04-.54-.22-.66-.52-.11-.29-.06-.56.12-.81.5-.69.92-1.43,1.2-2.24,1.02-2.99.64-5.79-1.16-8.39-.18-.27-.28-.53-.16-.85.11-.3.33-.48.65-.53.32-.05.59.06.79.33.76,1.03,1.31,2.15,1.66,3.38.28.97.42,1.95.42,2.96Z"/>
+            <path fill="currentColor" class="cls-1" d="M16.51,8.89c0,1.43-.4,2.75-1.17,3.95-.26.4-.75.51-1.14.27-.39-.24-.5-.74-.25-1.14.44-.69.73-1.42.85-2.23.2-1.37-.07-2.64-.79-3.82-.13-.21-.23-.42-.18-.68.06-.34.3-.6.64-.67.32-.07.66.06.85.35.51.77.86,1.61,1.04,2.52.1.48.15.97.15,1.46Z"/>
+          </g>
+        </g>
+      </svg></button>
+
+      <button onclick="playSegment(357,662)" class="btn btn-outline-light">Repeat After
+        <svg height="25px" width="25px" style="padding-left: 5px;" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.76 17.75">
+        <defs>
+          <style>
+            .cls-1 {
+              stroke-width: 0px;
+            }
+          </style>
+        </defs>
+        <g id="Layer_1-2" data-name="Layer 1">
+          <g>
+            <path fill="currentColor" class="cls-1" d="M12.63,8.88c0,2.67,0,5.33,0,8,0,.46-.27.79-.71.86-.26.04-.49-.05-.69-.22-.6-.52-1.2-1.04-1.8-1.56-1.19-1.03-2.39-2.07-3.58-3.09-.05-.04-.13-.06-.19-.07-1.58,0-3.16,0-4.75,0-.13,0-.28-.01-.4-.06C.18,12.6,0,12.35,0,12c0-2.1,0-4.21,0-6.31,0-.46.36-.8.83-.8.39,0,.79,0,1.18,0,1.24,0,2.48,0,3.72,0,.07,0,.15-.03.2-.07,1.77-1.52,3.53-3.05,5.3-4.58.48-.42,1.19-.23,1.36.36.03.1.04.21.04.31,0,2.66,0,5.32,0,7.99Z"/>
+            <path fill="currentColor" class="cls-1" d="M22.76,8.8c-.04,3.25-1.02,6.08-2.98,8.56-.24.31-.61.42-.96.29-.34-.13-.55-.45-.53-.82.01-.19.09-.35.21-.5.73-.92,1.31-1.92,1.75-3.01.45-1.13.73-2.31.82-3.53.21-3.11-.65-5.9-2.57-8.36-.22-.28-.28-.59-.11-.91.15-.31.42-.46.76-.45.27,0,.48.14.64.35.75.94,1.36,1.96,1.84,3.07.6,1.4.97,2.85,1.08,4.37.02.34.04.69.05.94Z"/>
+            <path fill="currentColor" class="cls-1" d="M19.72,8.89c-.02,2.33-.7,4.43-2.07,6.32-.19.27-.46.39-.78.35-.31-.04-.54-.22-.66-.52-.11-.29-.06-.56.12-.81.5-.69.92-1.43,1.2-2.24,1.02-2.99.64-5.79-1.16-8.39-.18-.27-.28-.53-.16-.85.11-.3.33-.48.65-.53.32-.05.59.06.79.33.76,1.03,1.31,2.15,1.66,3.38.28.97.42,1.95.42,2.96Z"/>
+            <path fill="currentColor" class="cls-1" d="M16.51,8.89c0,1.43-.4,2.75-1.17,3.95-.26.4-.75.51-1.14.27-.39-.24-.5-.74-.25-1.14.44-.69.73-1.42.85-2.23.2-1.37-.07-2.64-.79-3.82-.13-.21-.23-.42-.18-.68.06-.34.3-.6.64-.67.32-.07.66.06.85.35.51.77.86,1.61,1.04,2.52.1.48.15.97.15,1.46Z"/>
+          </g>
+        </g>
+      </svg></button>
+
+      <button onclick="playSegment(686,765)" class="btn btn-outline-light">Rolepay A
+        <svg height="25px" width="25px" style="padding-left: 5px;" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.76 17.75">
+        <defs>
+          <style>
+            .cls-1 {
+              stroke-width: 0px;
+            }
+          </style>
+        </defs>
+        <g id="Layer_1-2" data-name="Layer 1">
+          <g>
+            <path fill="currentColor" class="cls-1" d="M12.63,8.88c0,2.67,0,5.33,0,8,0,.46-.27.79-.71.86-.26.04-.49-.05-.69-.22-.6-.52-1.2-1.04-1.8-1.56-1.19-1.03-2.39-2.07-3.58-3.09-.05-.04-.13-.06-.19-.07-1.58,0-3.16,0-4.75,0-.13,0-.28-.01-.4-.06C.18,12.6,0,12.35,0,12c0-2.1,0-4.21,0-6.31,0-.46.36-.8.83-.8.39,0,.79,0,1.18,0,1.24,0,2.48,0,3.72,0,.07,0,.15-.03.2-.07,1.77-1.52,3.53-3.05,5.3-4.58.48-.42,1.19-.23,1.36.36.03.1.04.21.04.31,0,2.66,0,5.32,0,7.99Z"/>
+            <path fill="currentColor" class="cls-1" d="M22.76,8.8c-.04,3.25-1.02,6.08-2.98,8.56-.24.31-.61.42-.96.29-.34-.13-.55-.45-.53-.82.01-.19.09-.35.21-.5.73-.92,1.31-1.92,1.75-3.01.45-1.13.73-2.31.82-3.53.21-3.11-.65-5.9-2.57-8.36-.22-.28-.28-.59-.11-.91.15-.31.42-.46.76-.45.27,0,.48.14.64.35.75.94,1.36,1.96,1.84,3.07.6,1.4.97,2.85,1.08,4.37.02.34.04.69.05.94Z"/>
+            <path fill="currentColor" class="cls-1" d="M19.72,8.89c-.02,2.33-.7,4.43-2.07,6.32-.19.27-.46.39-.78.35-.31-.04-.54-.22-.66-.52-.11-.29-.06-.56.12-.81.5-.69.92-1.43,1.2-2.24,1.02-2.99.64-5.79-1.16-8.39-.18-.27-.28-.53-.16-.85.11-.3.33-.48.65-.53.32-.05.59.06.79.33.76,1.03,1.31,2.15,1.66,3.38.28.97.42,1.95.42,2.96Z"/>
+            <path fill="currentColor" class="cls-1" d="M16.51,8.89c0,1.43-.4,2.75-1.17,3.95-.26.4-.75.51-1.14.27-.39-.24-.5-.74-.25-1.14.44-.69.73-1.42.85-2.23.2-1.37-.07-2.64-.79-3.82-.13-.21-.23-.42-.18-.68.06-.34.3-.6.64-.67.32-.07.66.06.85.35.51.77.86,1.61,1.04,2.52.1.48.15.97.15,1.46Z"/>
+          </g>
+        </g>
+      </svg></button>
+
+      <button onclick="playSegment()" class="btn btn-outline-light">Roleplay B
+        <svg height="25px" width="25px" style="padding-left: 5px;" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.76 17.75">
+        <defs>
+          <style>
+            .cls-1 {
+              stroke-width: 0px;
+            }
+          </style>
+        </defs>
+        <g id="Layer_1-2" data-name="Layer 1">
+          <g>
+            <path fill="currentColor" class="cls-1" d="M12.63,8.88c0,2.67,0,5.33,0,8,0,.46-.27.79-.71.86-.26.04-.49-.05-.69-.22-.6-.52-1.2-1.04-1.8-1.56-1.19-1.03-2.39-2.07-3.58-3.09-.05-.04-.13-.06-.19-.07-1.58,0-3.16,0-4.75,0-.13,0-.28-.01-.4-.06C.18,12.6,0,12.35,0,12c0-2.1,0-4.21,0-6.31,0-.46.36-.8.83-.8.39,0,.79,0,1.18,0,1.24,0,2.48,0,3.72,0,.07,0,.15-.03.2-.07,1.77-1.52,3.53-3.05,5.3-4.58.48-.42,1.19-.23,1.36.36.03.1.04.21.04.31,0,2.66,0,5.32,0,7.99Z"/>
+            <path fill="currentColor" class="cls-1" d="M22.76,8.8c-.04,3.25-1.02,6.08-2.98,8.56-.24.31-.61.42-.96.29-.34-.13-.55-.45-.53-.82.01-.19.09-.35.21-.5.73-.92,1.31-1.92,1.75-3.01.45-1.13.73-2.31.82-3.53.21-3.11-.65-5.9-2.57-8.36-.22-.28-.28-.59-.11-.91.15-.31.42-.46.76-.45.27,0,.48.14.64.35.75.94,1.36,1.96,1.84,3.07.6,1.4.97,2.85,1.08,4.37.02.34.04.69.05.94Z"/>
+            <path fill="currentColor" class="cls-1" d="M19.72,8.89c-.02,2.33-.7,4.43-2.07,6.32-.19.27-.46.39-.78.35-.31-.04-.54-.22-.66-.52-.11-.29-.06-.56.12-.81.5-.69.92-1.43,1.2-2.24,1.02-2.99.64-5.79-1.16-8.39-.18-.27-.28-.53-.16-.85.11-.3.33-.48.65-.53.32-.05.59.06.79.33.76,1.03,1.31,2.15,1.66,3.38.28.97.42,1.95.42,2.96Z"/>
+            <path fill="currentColor" class="cls-1" d="M16.51,8.89c0,1.43-.4,2.75-1.17,3.95-.26.4-.75.51-1.14.27-.39-.24-.5-.74-.25-1.14.44-.69.73-1.42.85-2.23.2-1.37-.07-2.64-.79-3.82-.13-.21-.23-.42-.18-.68.06-.34.3-.6.64-.67.32-.07.66.06.85.35.51.77.86,1.61,1.04,2.52.1.48.15.97.15,1.46Z"/>
+          </g>
+        </g>
+      </svg></button> -->
+
+</div>
+<div style="padding: 10px;text-align: center;"><p><i>Instructions: repeat after each audio twice and familiarize yourself with the patterns </i> </p></div>
+<div conversation style="display: flex;flex-direction: column;padding: 10px;">
+    <!-- <p l>nomośkar <span class="t">Greetings</span></p>
+    <p>nomośkar <span class="t">Greetings</span></p>
+    <p l>(amar)[my] (nam)[name] (robi)[proper name] <span class="t">My name is Robi</span></p>
+    <p l>(apnar)[your] (nam)[name] (ki)[what? (question)] <span class="t">What is your name?</span></p>
+    <p>(amar)[my] (nam)[name] (ram)[proper name] <span class="t">My name is Ram</span></p>
+    
+
+    <p l>(apni)[you formally] (kothae)[where? (question)] (thaken)[live] <span class="t">Where do you live?</span></p>
+    <p>(ami)[I] (śikagote)[Chicago] (thaki)[I live] <span class="t">I live in Chicago.</span></p>
+<p l>(apni)[you formal] (ki)[what?] (kɔren)[do,make] <span class="t">What do you do?</span></p>
+<p>(ami)[I] (śikagote)[in Chicago] (poṛi)[study] <span class="t">I study in Chicago</span></p>
+<p l>(apni)[you] (ki)[what?] (poren)[study] <span class="t">What do you study?</span></p>
+<p>(ami)[I] (baŋla)[Bengali] (poṛi)[study] <span class="t">I study Bengali.</span></p>
+<p l>(baŋla)[Bengali] (ki)[(is) what?] (śɔkto)[hard] <span class="t">Is Bengali difficult?</span></p>
+<p>(na)[No] (khub)[very] (śɔhoj)[easy] <span class="t">No, it is very easy.</span></p>
+<p l>(śikagote)[Chicago is] (ki)[what?] (khub)[very] (gɔrɔm)[hot] <span class="t">Is it very hot in Chicago?</span></p>
+<p>(na)[no] (khub)[very] (gɔrɔm)[hot] (nɔe)[not] <span class="t">No, it is not very hot.</span></p>
+<p l>(śikagote)[Chicago is] (ki)[what?] (khub)[very] (ṭhaṇḍa)[cold] <span class="t">Is it very cold in Chicago?</span></p>
+<p>(hæ̃)[Yes] (khub)[very] (ṭhaṇḍa)[cold] <span class="t">Yes, it is very cold.</span></p>
+<p l>(śikago)[Chicago] (kɔto)[how?] (boṛo)[big] <span class="t">How big is Chicago?</span></p>
+<p>(śikago)[Chicago] (khub)[very] (boṛo)[big] (śɔhor)[city] <span class="t">Chicago is a very big city</span></p>
+<p l>(śikago)[Chicago] (kɔto)[how (many)?] (lok)[people] <span class="t">How many people are there in Chicago?</span></p>
+<p>(śɔhore)[in the city] (ɔnek)[many] (lok)[people] <span class="t">There are many people in the city</span></p>
+<p l>(apnar)[to you] (śikago)[Chicago] (kæmon)[how] (lage)[feels] <span class="t">How do you like Chicago?</span></p>
+<p>(khub)[very] (bhalo)[good] <span class="t">Very much</span></p> -->
+
+<script>
+
+function showAll(){
+  document.querySelectorAll('tbody > tr').forEach(function(row) {
+        row.classList.remove('hidden');
+      });
+
+      document.querySelectorAll('thead').forEach(function(row) {
+        row.classList.remove('hidden');
+      });
+
+}
+
+
+
+  function hideNthChild(n) {
+    document.querySelectorAll('thead').forEach(function(row) {
+        row.classList.add('hidden');
+      });
+
+
+
+
+    // Select all tbody elements
+    var allBodies = document.querySelectorAll('tbody');
+    
+    allBodies.forEach(function(tbody) {
+      // Select the nth child row of each tbody
+      var nthChildRow = tbody.querySelector(`tr:nth-child(${n})`);
+      if (nthChildRow) {
+        nthChildRow.classList.remove('hidden');
+      }
+
+      // Select all rows in tbody except the nth child
+      var otherRows = tbody.querySelectorAll(`tr:not(:nth-child(${n}))`);
+      otherRows.forEach(function(row) {
+        row.classList.add('hidden');
+      });
+    });
+  }
+
+</script>
+
+
+<!-- 1 -->
+<table class="table" style="max-width: 500px; align-self: center; padding: 15px;font-size: larger;">
+  <!-- <caption>List of users</caption> -->
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+      <!-- <th scope="col">Last</th>
+      <th scope="col">Audio</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(43,49)">
+      <!-- <th scope="row">a</th> -->
+      <td>My name is Naresh. What is your name?</td>
+    </tr>
+    <tr onclick="playSegment(64,69)">
+      <!-- <th scope="row">b</th> -->
+      <td>My name is Shuhash. What is your name?</td>
+      <!-- <td>@fat</td> -->
+    </tr>
+    <tr onclick="playSegment(83,87)" >
+      <!-- <th scope="row">c</th> -->
+      <td>My name is Probash. What is your name?</td>
+      <!-- <td>@twitter</td> -->
+    </tr>
+    <tr onclick="playSegment(101 ,106)">
+      <!-- <th scope="row">c</th> -->
+      <td>My name is Shomdeb. What is your name?</td>
+      <!-- <td>@twitter</td> -->
+    </tr>
+    <tr onclick="playSegment(122 ,127)">
+      <!-- <th scope="row">c</th> -->
+      <td>My name is Shamir. What is your name?</td>
+      <!-- <td>@twitter</td> -->
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- 2 -->
+<table class="table" style="max-width: 500px; align-self: center; padding: 15px;font-size: larger;">
+  <!-- <caption>List of users</caption> -->
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+      <!-- <th scope="col">Last</th>
+      <th scope="col">Audio</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(2*60+22,2*60+25)">
+      <!-- <th scope="row">a</th> -->
+      <td>My name is Nira.</td>
+    </tr>
+    <tr onclick="playSegment(2*60+29,2*60+32)">
+      <!-- <th scope="row">b</th> -->
+      <td>My name is Rita.</td>
+      <!-- <td>@fat</td> -->
+    </tr>
+    <tr onclick="playSegment(2*60+43,2*60+46)" >
+      <!-- <th scope="row">c</th> -->
+      <td>My name is Shanta.</td>
+      <!-- <td>@twitter</td> -->
+    </tr>
+    <tr onclick="playSegment(2*60+54 ,2*60+56)">
+      <!-- <th scope="row">c</th> -->
+      <td>My name is Shita.</td>
+      <!-- <td>@twitter</td> -->
+    </tr>
+    <tr onclick="playSegment(3*60+11 ,3*60+14)">
+      <!-- <th scope="row">c</th> -->
+      <td>My name is Shipra.</td>
+      <!-- <td>@twitter</td> -->
+    </tr>
+  </tbody>
+</table>
+
+<table class="table" style="max-width: 500px; align-self: center; padding: 15px;font-size: larger;">
+  <!-- <caption>List of users</caption> -->
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+      <!-- <th scope="col">Last</th>
+      <th scope="col">Audio</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(3*60+22,3*60+26)">
+      <!-- <th scope="row">a</th> -->
+      <td>Where do you live?</td>
+    </tr>
+    <tr onclick="playSegment(3*60+38,3*60+41)">
+      <!-- <th scope="row">b</th> -->
+      <td>Where do you sit?</td>
+      <!-- <td>@fat</td> -->
+    </tr>
+    <tr onclick="playSegment(3*60+50,3*60+53)" >
+      <!-- <th scope="row">c</th> -->
+      <td>Where do you play?</td>
+      <!-- <td>@twitter</td> -->
+    </tr>
+    <tr onclick="playSegment(4*60+2 ,4*60+5)">
+      <!-- <th scope="row">c</th> -->
+      <td>Where do you study?</td>
+      <!-- <td>@twitter</td> -->
+    </tr>
+    <tr onclick="playSegment(4*60+15,4*60+18)">
+      <!-- <th scope="row">c</th> -->
+      <td>What do you do?</td>
+      <!-- <td>@twitter</td> -->
+    </tr>
+  </tbody>
+</table>
+
+
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(4*60+33,4*60+36)">
+      <td>I live in the city.</td>
+    </tr>
+    <tr onclick="playSegment(4*60+41,4*60+43)">
+      <td>I sit in the chair</td>
+    </tr>
+    <tr onclick="playSegment(4*60+55,4*60+58)" >
+      <td>I play here </td>
+    </tr>
+    <tr onclick="playSegment(5*60+9 ,5*60+12)">
+      <td>I study in Chicago</td>
+    </tr>
+    <tr onclick="playSegment(5*60+28 ,5*60+31)">
+      <td>I study here</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 5 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(5*60+37,5*60+39)">
+      <td>What do you do? </td>
+    </tr>
+    <tr onclick="playSegment(5*60+50,5*60+52)">
+      <td>What do you study? </td>
+    </tr>
+    <tr onclick="playSegment(6*60+4,6*60+6)" >
+      <td>What do you play? </td>
+    </tr>
+    <tr onclick="playSegment(6*60+19 ,6*60+21)">
+      <td>What do you study? </td>
+    </tr>
+    <tr onclick="playSegment(6*60+19 ,6*60+21)">
+      <td>What do you read? </td>
+    </tr>
+  </tbody>
+</table>
+<!-- 6 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(6*60+43,6*60+45)">
+      <td>I study in the college.</td>
+    </tr>
+    <tr onclick="playSegment(6*60+54,6*60+56)">
+      <td>I study Bengali.</td>
+    </tr>
+    <tr onclick="playSegment(7*60+9,7*60+11)" >
+      <td>I play games.</td>
+    </tr>
+    <tr onclick="playSegment(7*60+23 ,7*60+26)">
+      <td>I study language.</td>
+    </tr>
+    <tr onclick="playSegment(7*60+42 ,7*60+44)">
+      <td>I read English.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 7 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(7*60+53,7*60+56)">
+      <td>Is the college difficult?</td>
+    </tr>
+    <tr onclick="playSegment(8*60+6,8*60+9)">
+      <td>Is Bengali difficult?</td>
+    </tr>
+    <tr onclick="playSegment(8*60+20.5,8*60+22.1)" >
+      <td>Are the games easy?</td>
+    </tr>
+    <tr onclick="playSegment(8*60+35 ,8*60+37)">
+      <td>Is language easy?</td>
+    </tr>
+    <tr onclick="playSegment(8*60+50.5 ,8*60+53)">
+      <td>Is English very difficult?</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 8 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(9*60+6.5,9*60+8.5)">
+      <td>No, it is not difficult.</td>
+    </tr>
+    <tr onclick="playSegment(9*60+17.5,9*60+20)">
+      <td>No, it is not very difficult.</td>
+    </tr>
+    <tr onclick="playSegment(9*60+32,9*60+34.5)" >
+      <td>No, not very easy.</td>
+    </tr>
+    <tr onclick="playSegment(9*60+43.5 ,9*60+47)">
+      <td>No, language is not easy.</td>
+    </tr>
+    <tr onclick="playSegment(10*60+3 ,10*60+5.5)">
+      <td>No, it is not difficult.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 9 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(10*60+12,10*60+15)">
+      <td>Is it very hot in the city?</td>
+    </tr>
+    <tr onclick="playSegment(10*60+30,10*60+33)">
+      <td>Is it very cold in the house?</td>
+    </tr>
+    <tr onclick="playSegment(10*60+40,8*60+43)" >
+      <td>Is it very hot there?</td>
+    </tr>
+    <tr onclick="playSegment(10*60+58 ,11*60+0.5)">
+      <td>Is it very cold in Chicago?</td>
+    </tr>
+    <tr onclick="playSegment(11*60+11.5 ,11*60+14)">
+      <td>Is it very cold here?</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 10 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(11*60+27,11*60+29)">
+      <td>No, it is not very hot</td>
+    </tr>
+    <tr onclick="playSegment(11*60+39,11*60+42)">
+      <td>No, it is not very cold</td>
+    </tr>
+    <tr onclick="playSegment(11*60+52.5,11*60+56)" >
+      <td>No, it is not very hot there</td>
+    </tr>
+    <tr onclick="playSegment(12*60+7 ,12*60+11)">
+      <td>No, it is not very cold in Chicago</td>
+    </tr>
+    <tr onclick="playSegment(12*60+31 ,12*60+34)">
+      <td>No, it is not very cold here</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 11 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(12*60+40.5,12*60+43)">
+      <td>Is it very cold in the city?</td>
+    </tr>
+    <tr onclick="playSegment(12*60+53.5,12*60+55.5)">
+      <td>Is it very hot in the house?</td>
+    </tr>
+    <tr onclick="playSegment(13*60+7.5,13*60+10)" >
+      <td>Is it very cold there?</td>
+    </tr>
+    <tr onclick="playSegment(13*60+25 ,13*60+27)">
+      <td>Is it very hot in Chicago?</td>
+    </tr>
+    <tr onclick="playSegment(13*60+32 ,13*60+34)">
+      <td>Is it very hot here?</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- 12 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(13*60+47,13*60+50)">
+      <td>Yes, it is very cold.</td>
+    </tr>
+    <tr onclick="playSegment(14*60+1,14*60+4)">
+      <td>Yes, it is very hot.</td>
+    </tr>
+    <tr onclick="playSegment(14*60+18.5,14*60+21.1)" >
+      <td>Yes, it is very cold there.</td>
+    </tr>
+    <tr onclick="playSegment(14*60+36 ,14*60+39)">
+      <td>Yes, it is very hot in Chicago</td>
+    </tr>
+    <tr onclick="playSegment(14*60+52.5 ,8*60+55)">
+      <td>Yes, it is very hot here</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 13 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(15*60+10,15*60+12)">
+      <td>How big is the city?</td>
+    </tr>
+    <tr onclick="playSegment(15*60+20,15*60+22.5)">
+      <td>How difficult is Bengali?</td>
+    </tr>
+    <tr onclick="playSegment(15*60+38.5,15*60+40.5)" >
+      <td>How cold is Chicago?</td>
+    </tr>
+    <tr onclick="playSegment(15*60+57.5 ,16*60)">
+      <td>How hot is your house?</td>
+    </tr>
+    <tr onclick="playSegment(16*60+13 ,16*60+15.5)">
+      <td>How easy is English?</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 14 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(16*60+27.5,16*60+30)">
+      <td>Chicago is a very big city</td>
+    </tr>
+    <tr onclick="playSegment(16*60+43,16*60+45.5)">
+      <td>Bengali is a very easy langauge.</td>
+    </tr>
+    <tr onclick="playSegment(17*60+1,17*60+3.5)" >
+      <td>Chicago is a very cold city.</td>
+    </tr>
+    <tr onclick="playSegment(17*60+19.5 ,17*60+22.5)">
+      <td>My house is very hot</td>
+    </tr>
+    <tr onclick="playSegment(17*60+38.5 ,17*60+41)">
+      <td>English is a very difficult language</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 15 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(17*60+55.5,17*60+57.5)">
+      <td>How many people are there in the city?</td>
+    </tr>
+    <tr onclick="playSegment(18*60+8,18*60+10)">
+      <td>How many people are there in the country?</td>
+    </tr>
+    <tr onclick="playSegment(18*60+19.5,18*60+21.5)" >
+      <td>How many people are there in Chicago?</td>
+    </tr>
+    <tr onclick="playSegment(18*60+34 ,18*60+36.5)">
+      <td>How many people are there in your house?</td>
+    </tr>
+    <tr onclick="playSegment(18*60+56 ,18*60+58.5)">
+      <td>How many people are there in your college?</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 16 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(19*60+6.5,19*60+8.5)">
+      <td>There are many people in Chicago.</td>
+    </tr>
+    <tr onclick="playSegment(19*60+19.5,19*60+21.5)">
+      <td>There are many people in the country.</td>
+    </tr>
+    <tr onclick="playSegment(19*60+32.5,19*60+34.5)" >
+      <td>There are many people in the city.</td>
+    </tr>
+    <tr onclick="playSegment(19*60+44 ,19*60+46)">
+      <td>There are many people in my house.</td>
+    </tr>
+    <tr onclick="playSegment(19*60+57.5 ,19*60+59.5)">
+      <td>There are many people in my college.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 17 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(20*60+14,20*60+16.5)">
+      <td>How do you like the city?</td>
+    </tr>
+    <tr onclick="playSegment(20*60+29,20*60+31.5)">
+      <td>How do you like Bengali?</td>
+    </tr>
+    <tr onclick="playSegment(20*60+43.5,20*60+45.5)" >
+      <td>How do you like Chicago?</td>
+    </tr>
+    <tr onclick="playSegment(21*60+12 ,21*60+15)">
+      <td>How do you like your house?</td>
+    </tr>
+    <tr onclick="playSegment(21*60+23.5 ,21*60+25.5)">
+      <td>How do you like the college?</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 18 -->
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Repeat after in Bangla twice:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="playSegment(21*60+41,21*60+43.5)">
+      <td>I like the city very much.</td>
+    </tr>
+    <tr onclick="playSegment(21*60+53.5,21*60+56.5)">
+      <td>I like Bengali very much.</td>
+    </tr>
+    <tr onclick="playSegment(22*60+9,22*60+11.5)" >
+      <td>I do not like Chicago very much.</td>
+    </tr>
+    <tr onclick="playSegment(22*60+24 ,22*60+27.5)">
+      <td>I do not like my house very much.</td>
+    </tr>
+    <tr onclick="playSegment(22*60+43 ,22*60+46)">
+      <td>I like the college very much.</td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+    <style>
+      .hidden {
+      display: none;
+    }
+      table{
+        max-width: 500px; align-self: center; padding: 15px;font-size: larger;
+      }
+      tbody tr:hover td {
+        background-color: yellow;
+      font-weight: 600;}
+      
+      /* tr[onclick]:hover {
+            background-color: rgb(0, 107, 25); Highlight with a background color
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 119, 47);
+        }
+        tr[onclick]:hover td::before {
+      content: url(/audioWhite.svg);
+      display: inline-block;
+      height: 15px;
+      width: 15px;
+      vertical-align: middle;
+      margin-right: 5px;
+    } */
+
+
+      tr[onclick]{
+    cursor: pointer;
+
+  }
+  tr[onclick] td::before {
+      content: url(/audio.svg);
+      display: inline-block;
+      height: 15px;
+      width: 15px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+ .tooltip .tooltip-inner {
+            font-size: 2em; /* Double the font size */
+            /* padding: 1em; */
+            background-color: red;
+        }
+
+        .tooltip.bs-tooltip-top .arrow::before,
+        .tooltip.bs-tooltip-bottom .arrow::before {
+            margin-left: -5px;
+        }
+
+        .tooltip.bs-tooltip-top .tooltip-inner {
+            margin-top: 10px; /* Additional 10px offset for top tooltips */
+        }
+
+
+        .translated-word {
+            transition: all 0.3s ease-in-out;
+            display: inline-block; /* Ensure that inline elements can scale properly */
+        }
+
+        .translated-word:hover {
+            /* background-color: rgb(0, 107, 25); Highlight with a background color */
+            transform: scale(1.3); /* Magnify */
+            color: rgb(255, 0, 0); Change text color for additional highlight
+        }
+        h1{
+            font-family:Georgia, 'Times New Roman', Times, serif
+        }
+        p{
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        /* div[conversation]{
+            text-align: right;
+        } */
+        div[conversation]>p>span.t{
+            display: block;
+            font-size: small;
+            font-style: italic;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        div[conversation]>p{
+            align-self: flex-end;
+            font-size: larger;
+            padding: 20px;
+            background-color: rgb(255, 236, 202);
+            border-radius: 10px;
+            margin: 20px 40px 5px;
+            position: relative;
+            max-width: 60%;
+            /* color: white; */
+            font-weight: bold;
+            
+        }
+
+        div[conversation]>p[l]{
+            align-self: flex-start;
+            background-color: rgb(182, 255, 182);
+
+        }
+        
+        .tooltip-arrow::before {
+            display: none; /* Hide the arrow */
+        }
+
+        div[conversation]>p::before {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    right: -1rem;
+
+    border-width: 1rem;
+    border-style: solid;
+    border-color:
+        transparent transparent rgb(255, 236, 202) transparent;
+}
+
+div[conversation]>p[l]::before{
+
+    left: -1rem;
+    right: unset;
+    border-color:
+        transparent transparent rgb(182, 255, 182) transparent;
+
+}
+    </style>
+
+
+<script>
+
+    // Function to replace words with translation spans
+function replaceWithSpans(text) {
+    // Regular expression to match words followed by their translations in parentheses
+    var regex = /\(([\p{L}\p{M}\p{N}_]+)\)\[(.+?)\]/gu;
+    // Replace matching words with translation spans
+    return text.replace(regex, function(match, word, translation) {
+        return '<span class="translated-word" data-bs-toggle="tooltip" data-bs-placement="bottom" title="' + translation + '">' + word + '</span>';
+    });
+}
+
+// Wait for the DOM content to be fully loaded
+document.addEventListener("DOMContentLoaded", function() {
+    // Get all <div> elements with class "conversation"
+    var conversationDivs = document.querySelectorAll('div[conversation]');
+    conversationDivs.forEach(function(conversationDiv) {
+        // Get all <p> elements within the conversation div
+        var paragraphElements = conversationDiv.querySelectorAll('p');
+        paragraphElements.forEach(function(paragraphElement) {
+            // Replace text within each paragraph
+            paragraphElement.innerHTML = replaceWithSpans(paragraphElement.innerHTML);
+        });
+    });
+
+    // Initialize Bootstrap tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('.translated-word'));
+    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+});
+
+</script>
+
+
+</body>
+
