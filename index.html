@@ -534,6 +534,7 @@ function processAndRenderRecords(records) {
                           <li data-bs-toggle="modal" data-bs-target="#content" data-type="static" data-popup-url="https://docs.google.com/document/d/e/2PACX-1vRu_0PNPobgWyP-CrN8NlYS8vfEzIClmsI_Y3Q4M7LRrqo1MX2eEY2YnojOW7b5_DA9hGwfZTaZqVYF/pub?embedded=true" data-popup-height="4000">Level 2 Syllabus</li>
                           <li data-bs-toggle="modal" data-bs-target="#content" data-type="resource" data-popup-url="resources/convo1.html">Conversation #1</li>
                           <li data-bs-toggle="modal" data-bs-target="#content" data-type="resource" data-popup-url="resources/drill1.html">Drill #1</li>
+                          <li data-bs-toggle="modal" data-bs-target="#content" data-type="static" data-popup-url="https://quizlet.com/137843275/match/embed?i=yfxd2&x=1jj1" data-popup-height="800">Level 2 Syllabus</li>
                           <!-- <li data-bs-toggle="modal" data-bs-target="#content" data-type="drill" data-popup-url="https://www.youtube.com/watch?v=szIC5w62x3g" data-popup-height="400px">Vocabulary #1</li> -->
                         </ul>
                         <style>
@@ -609,6 +610,8 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
     var height = button.getAttribute('data-popup-height'); // Extract info from data-popup-height attribute
     var iframe = exampleModal.querySelector('#contentframe');
     var modalBodies = document.querySelectorAll('.modal-body');
+    var exampleModal = document.getElementById('content');
+
 
     iframe.src = url;
     
@@ -620,6 +623,7 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
     modalBodies.forEach(function(modalBody) {
         // Set padding to 0
         modalBody.style.padding = '0';
+        modalBody.classList.add('modal-fullscreen');
     });
 
 
@@ -630,6 +634,7 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
         modalBodies.forEach(function(modalBody) {
         // Set padding to 0
         modalBody.style.padding = '15px';
+        modalBody.classList.remove('modal-fullscreen');
     });
     }
 });
@@ -693,42 +698,7 @@ exampleModal.addEventListener('hidden.bs.modal', function () {
 
                       
 
-<div style="background: #d6ffe7;"  class="p-4 my-4 border rounded text-black studentonly">
-  <!-- linear-gradient(160deg,#e09603,#32ba00) -->
-<h2 style="color: rgb(0, 57, 0);" class=" fst-italic h2 text-left"><b>Billing:</b></h2>
-<p>Setup payment, view invoices, and payment methods below</p>
-<!-- <button type="button" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-dark"></button> -->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Setup Billing
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm modal-dialog-centered">
-    <div class="modal-content">
-      <!-- <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div> -->
-      <div class="modal-body text-danger">
-        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-        <p>Please adjust the quantity of hours in checkout <span id="numHours"></span> </p>
-        <a id="setupbilling" href=""><button type="button" class="btn btn-dark">Go to payment</button></a>
-
-      </div>
-      <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> -->
-    </div>
-  </div>
-</div>
-
-  <a id="billing" href="" ><button type="button" class="btn btn-success">Manage Billing</button></a>
-<!-- <button href="https://meet.google.com/qra-yiap-ofu" type="button" class="btn btn-dark">Go to class</button> -->
-
-</div>
 
 <div style="background: #ebebeb;"  class="p-4 my-4 border rounded text-black studentonly">
   <!-- linear-gradient(160deg,#e09603,#32ba00) -->
@@ -741,7 +711,8 @@ exampleModal.addEventListener('hidden.bs.modal', function () {
 </ul> -->
 
 <p>
-  <span class="badge rounded-pill text-bg-warning fst-italic" style="opacity: 0.5;">BETA</span> means you are an early adopter and will recieve product update emails. Please give feedback regularly so we can improve:
+  <!-- <span class="badge rounded-pill text-bg-warning fst-italic" style="opacity: 0.5;">BETA</span> means you are an early adopter and will recieve product update emails.  -->
+  Please give feedback regularly so we can improve:
 </p>
 
 <input type="text" id="feedbackname" name="fname" style="display: none;">
@@ -786,6 +757,43 @@ document.getElementById('feedbackname').style.display = 'none';
 </p> -->
 <!-- <p class="mb-0">Your Student ID is: <b id="setrecordID"></b></p> -->
 
+<!-- <button href="https://meet.google.com/qra-yiap-ofu" type="button" class="btn btn-dark">Go to class</button> -->
+
+</div>
+
+<div style="background: #d6ffe7;"  class="p-4 my-4 border rounded text-black studentonly">
+  <!-- linear-gradient(160deg,#e09603,#32ba00) -->
+<h2 style="color: rgb(0, 57, 0);" class=" fst-italic h2 text-left"><b>Billing:</b></h2>
+<p>Setup payment, view invoices, and payment methods below</p>
+<!-- <button type="button" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-dark"></button> -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Setup Billing
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body text-danger">
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        <p>Please adjust the quantity of hours in checkout <span id="numHours"></span> </p>
+        <a id="setupbilling" href=""><button type="button" class="btn btn-dark">Go to payment</button></a>
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+  <a id="billing" href="" ><button type="button" class="btn btn-success">Manage Billing</button></a>
 <!-- <button href="https://meet.google.com/qra-yiap-ofu" type="button" class="btn btn-dark">Go to class</button> -->
 
 </div>
