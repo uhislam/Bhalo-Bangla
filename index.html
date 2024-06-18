@@ -534,7 +534,7 @@ function processAndRenderRecords(records) {
                           <li data-bs-toggle="modal" data-bs-target="#content" data-type="static" data-popup-url="https://docs.google.com/document/d/e/2PACX-1vRu_0PNPobgWyP-CrN8NlYS8vfEzIClmsI_Y3Q4M7LRrqo1MX2eEY2YnojOW7b5_DA9hGwfZTaZqVYF/pub?embedded=true" data-popup-height="4000">Level 2 Syllabus</li>
                           <li data-bs-toggle="modal" data-bs-target="#content" data-type="resource" data-popup-url="resources/convo1.html">Conversation #1</li>
                           <li data-bs-toggle="modal" data-bs-target="#content" data-type="resource" data-popup-url="resources/drill1.html">Drill #1</li>
-                          <li data-bs-toggle="modal" data-bs-target="#content" data-type="static" data-popup-url="https://quizlet.com/137843275/match/embed?i=yfxd2&x=1jj1" data-popup-height="800">Level 2 Syllabus</li>
+                          <li data-bs-toggle="modal" data-bs-target="#content" data-type="static" data-popup-url="https://quizlet.com/137843275/match/embed?i=yfxd2&x=1jj1" data-popup-height="800">Lesson #1 Vocab</li>
                           <!-- <li data-bs-toggle="modal" data-bs-target="#content" data-type="drill" data-popup-url="https://www.youtube.com/watch?v=szIC5w62x3g" data-popup-height="400px">Vocabulary #1</li> -->
                         </ul>
                         <style>
@@ -610,8 +610,13 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
     var height = button.getAttribute('data-popup-height'); // Extract info from data-popup-height attribute
     var iframe = exampleModal.querySelector('#contentframe');
     var modalBodies = document.querySelectorAll('.modal-body');
-    var exampleModal = document.getElementById('content');
+    var dialog = exampleModal.querySelector('.modal-dialog');
+    dialog.classList.add('modal-fullscreen');
+    // dialog.classList.remove('modal-fullscreen-md-down');
 
+    // Debugging statements
+
+    console.log('Dialog:', dialog);
 
     iframe.src = url;
     
@@ -621,12 +626,10 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
             iframe.style.height = (iframe.contentWindow.document.body.scrollHeight+50) + 'px';
     // Loop through each modal body element
     modalBodies.forEach(function(modalBody) {
-        // Set padding to 0
         modalBody.style.padding = '0';
-        modalBody.classList.add('modal-fullscreen');
     });
-
-
+    
+    dialog.classList.remove('modal-fullscreen');
         };
     } else {
         iframe.style.height = height + 'px';
@@ -635,9 +638,13 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
         // Set padding to 0
         modalBody.style.padding = '15px';
         modalBody.classList.remove('modal-fullscreen');
+        
     });
+    
+
     }
 });
+
 
 exampleModal.addEventListener('hidden.bs.modal', function () {
     var iframe = exampleModal.querySelector('#contentframe');
